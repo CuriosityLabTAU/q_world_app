@@ -1,0 +1,112 @@
+#:kivy 1.0
+#:import kivy kivy
+#:import win kivy.core.window
+
+<ConceptWidget>:
+    image_id: image_id
+    button_id: button_id
+    FloatLayout:
+        LoggedButton:
+            id: button_id
+            on_press: root.concept_pressed()
+            background_color: (0,0,0,0)
+        Image:
+            id: image_id
+
+<QuestionWidget>:
+    image_id_what: image_id_what
+    button_id_what: button_id_what
+    image_id_how: image_id_how
+    button_id_how: button_id_how
+    image_id_why: image_id_why
+    button_id_why: button_id_why
+
+    FloatLayout:
+        LoggedButton:
+            id: button_id_what
+            on_press: root.question_pressed("what")
+            background_color: (0,0,0,0)
+        Image:
+            id: image_id_what
+        LoggedButton:
+            id: button_id_how
+            on_press: root.question_pressed("how")
+            background_color: (0,0,0,0)
+        Image:
+            id: image_id_how
+        LoggedButton:
+            id: button_id_why
+            on_press: root.question_pressed("why")
+            background_color: (0,0,0,0)
+        Image:
+            id: image_id_why
+
+
+
+<Item>:
+    # each time a picture is created, the image can delay the loading
+    # as soon as the image is loaded, ensure that the center is changed
+    # to the center of the screen.
+    on_size: self.center = win.Window.center
+    size: image.size
+    size_hint: None, None
+    item_lbl:item_lbl
+
+    Image:
+        id: image
+        source: root.source
+
+        # create initial image to be 400 pixels width
+        size: 400, 400 / self.image_ratio
+
+        Label:
+            id: item_lbl
+            text: ""
+            pos: 150, -50
+            font_size: 40
+            color: (0, 0.71, 1., 1)
+            font_name: "fonts/the_font_bold.ttf"
+            bold: True
+
+<ZeroScreen>:
+    start_button_pre: start_button_pre
+    start_button_post: start_button_post
+    subject_id: subject_id
+    name: 'zero_screen'
+    Widget:
+        LoggedButton:
+            id: start_button_pre
+            name: 'start_button_pre'
+            background_color: 1,0,1,1
+            background_normal: ''
+            text: 'Start Pre'
+            font_size: 32
+            size: root.width * 0.15, root.height * 0.15
+            pos: root.width * 0.65 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+            on_press: app.press_start('pre')
+
+        LoggedButton:
+            id: start_button_post
+            name: 'start_button_post'
+            background_color: 1,0,1,1
+            background_normal: ''
+            text: 'Start Post'
+            font_size: 32
+            size: root.width * 0.175, root.height * 0.15
+            pos: root.width * 0.85 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+            on_press: app.press_start('post')
+
+        Label:
+            text: "Subject ID:"
+            size: root.width * 0.175, root.height * 0.2
+            pos: root.width * 0.05 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+
+        LoggedTextInput:
+            id: subject_id
+            name: 'subject_id'
+            text: ''
+            font_size: 36
+            size: root.width * 0.4, root.height * 0.2
+            pos: root.width * 0.35 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+
+

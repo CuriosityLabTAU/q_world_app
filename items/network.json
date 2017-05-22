@@ -1,0 +1,80 @@
+{
+  "sequence": [
+    {
+      "network": "network_1",
+      "type" : "full",
+      "n": 0,
+      "duration": 60
+    }
+  ],
+  "questions": {
+    "general": {
+      "size": "100,100",
+      "pos": 100
+    },
+    "what": {
+      "image": "items/what.png",
+      "pos": 200
+    },
+    "how": {
+      "image": "items/how.png",
+      "pos": 0
+    },
+    "why": {
+      "image": "items/why.png",
+      "pos": 100
+    }
+  },
+  "network_1": {
+    "background": "items/background1.png",
+    "concepts": {
+      "concept1": {
+        "image": "items/alien1.png",
+        "pos": "300,200",
+        "size": "50,50",
+        "level": 1
+      },
+      "concept2": {
+        "image": "items/plant1.png",
+        "pos": "50,0",
+        "size": "10,10",
+        "level": 2
+      },
+      "concept3": {
+        "image": "items/tech1.png",
+        "pos": "50,50",
+        "size": "10,10",
+        "level": 3
+      }
+    }
+  },
+  "network_2": {
+    "background": "items/tree-scene.png",
+    "concepts": {
+      "concept1": {
+        "image": "items/dragon1.png",
+        "pos": "300,200",
+        "size": "50,50",
+        "level": 1
+      },
+      "concept2": {
+        "image": "items/bird1.png",
+        "pos": "50,0",
+        "size": "10,10",
+        "level": 2
+      },
+      "concept3": {
+        "image": "items/bird1.png",
+        "pos": "50,50",
+        "size": "10,10",
+        "level": 3
+      }
+    }
+  },
+  "edges": [
+    "concept1,what,concept2",
+    "concept1,what,concept3",
+    "concept1,why,concept2",
+    "concept2,what,concept3"
+  ]
+}
