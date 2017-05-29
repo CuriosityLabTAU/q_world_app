@@ -9,72 +9,184 @@
   ],
   "questions": {
     "general": {
-      "size": "100,100",
-      "pos": 100
+      "size": "0.1,0.1",
+      "pos": 0.05
     },
     "what": {
-      "image": "items/what.png",
-      "pos": 200
+      "image": "what.png",
+      "pos": 0.1
     },
     "how": {
-      "image": "items/how.png",
-      "pos": 0
+      "image": "how.png",
+      "pos": 0.0
     },
     "why": {
-      "image": "items/why.png",
-      "pos": 100
+      "image": "why.png",
+      "pos": 0.2
     }
   },
   "network_1": {
-    "background": "items/background1.png",
+    "dir": "items/world1/",
+    "background": "background1.png",
     "concepts": {
-      "concept1": {
-        "image": "items/alien1.png",
-        "pos": "300,200",
-        "size": "50,50",
+      "alien": {
+        "image": ["alien1.png"],
+        "pos": "0.46,0.23",
+        "size": "0.1,0.1",
         "level": 1
       },
-      "concept2": {
-        "image": "items/plant1.png",
-        "pos": "50,0",
-        "size": "10,10",
-        "level": 2
-      },
-      "concept3": {
-        "image": "items/tech1.png",
-        "pos": "50,50",
-        "size": "10,10",
-        "level": 3
-      }
-    }
-  },
-  "network_2": {
-    "background": "items/tree-scene.png",
-    "concepts": {
-      "concept1": {
-        "image": "items/dragon1.png",
-        "pos": "300,200",
-        "size": "50,50",
+      "plant": {
+        "image": ["plant1.png"],
+        "pos": "0.11,0.27",
+        "size": "0.3,0.3",
         "level": 1
       },
-      "concept2": {
-        "image": "items/bird1.png",
-        "pos": "50,0",
-        "size": "10,10",
+      "tech": {
+        "image": ["tech1.png"],
+        "pos": "0.79,0.59",
+        "size": "0.2,0.2",
+        "level": 1
+      },
+      "part_1": {
+        "image": ["what_cell1.png"],
+        "pos": "0.2,0.6",
+        "size": "0.1, 0.1",
         "level": 2
       },
-      "concept3": {
-        "image": "items/bird1.png",
-        "pos": "50,50",
-        "size": "10,10",
+      "part_2": {
+        "image": ["what_cell2.png"],
+        "pos": "0.35,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_3": {
+        "image": ["what_cell3.png"],
+        "pos": "0.5,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_4": {
+        "image": ["what_cell7.png"],
+        "pos": "0.65,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_5": {
+        "image": ["what_cell9.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "reason_1": {
+        "image": ["app1_all_city_2.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_2": {
+        "image": ["smiley_face.png"],
+        "pos": "0.4,0.09",
+        "size": "0.2, 0.2",
         "level": 3
+      },
+      "reason_3": {
+        "image": ["animal3.png"],
+        "pos": "0.04,0.19",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_4": {
+        "image": ["aligator.png"],
+        "pos": "0.04,0.35",
+        "size": "0.15, 0.15",
+        "level": 3
+      },
+      "reason_5": {
+        "image": ["moon.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_6": {
+        "image": ["sun.png"],
+        "pos": "0.35,0.73",
+        "size": "0.2, 0.2",
+        "level": 3
+      },
+      "process_1": {
+        "image": ["how_1_1.png","how_1_2.png"],
+        "pos": "0.3,0.2",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_2": {
+        "image": ["how_1_1.png","how_1_2.png"],
+        "pos": "0.3,0.2",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_3": {
+        "image": ["how_1_1.png","how_1_2.png"],
+        "pos": "0.3,0.2",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_4": {
+        "image": ["how_1_1.png","how_1_2.png"],
+        "pos": "0.3,0.2",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_5": {
+        "image": ["how_1_1.png","how_1_2.png"],
+        "pos": "0.3,0.2",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_6": {
+        "image": ["how_1_1.png","how_1_2.png"],
+        "pos": "0.3,0.2",
+        "size": "0.2, 0.2",
+        "level": 2
       }
     }
   },
   "edges": [
-    "concept1,what,concept2",
-    "concept1,what,concept3",
-    "concept1,why,concept2",
-    "concept2,what,concept3"
+    "alien,what,part_1",
+   "alien,what,part_2",
+    "alien,what,part_3",
+    "alien,what,part_4",
+    "alien,why,reason_1",
+    "alien,how,process_1",
+    "alien,how,process_2",
+    "reason_1,what,part_1",
+    "reason_1,what,part_3",
+    "reason_1,why,reason_2",
+    "reason_1,how,process_1",
+    "reason_1,how,process_3",
+    "plant,what,part_1",
+    "plant,what,part_3",
+    "plant,what,part_4",
+    "plant,what,part_5",
+    "plant,why,reason_3",
+    "plant,how,process_3",
+    "plant,how,process_4",
+    "reason_3,what,part_1",
+    "reason_3,what,part_3",
+    "reason_3,why,reason_4",
+    "reason_3,how,process_4",
+    "reason_3,how,process_5",
+    "tech,what,part_1",
+    "tech,what,part_2",
+    "tech,what,part_3",
+    "tech,what,part_5",
+    "tech,why,reason_5",
+    "tech,how,process_1",
+    "tech,how,process_4",
+    "reason_5,what,part_2",
+    "reason_5,what,part_4",
+    "reason_5,why,reason_6",
+    "reason_5,how,process_3",
+    "reason_5,how,process_5"
   ]
 }

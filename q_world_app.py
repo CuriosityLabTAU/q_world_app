@@ -12,6 +12,8 @@ from kivy_communication import *
 from hebrew_management import HebrewManagement
 from text_handling import *
 from kivy.uix.screenmanager import Screen
+from kivy.animation import Animation
+from copy import deepcopy
 from the_network import *
 LANGUAGE = 'English'  # 'Hebrew'
 
@@ -30,6 +32,7 @@ class GameScreen(Screen):
 
     def start(self, number=-1, the_app=None, the_type=None, duration=120,
               network=None, questions=None, edges=None):
+        self.size = (200,100)
         self.game_number = number
         self.the_app = the_app
         self.game_type = the_type
@@ -51,10 +54,6 @@ class GameScreen(Screen):
         if self.game_number == 0:
             self.curiosity_game.set_tutorial()
 
-        self.curiosity_game.load(network=self.game_network,
-                                 questions=self.game_questions,
-                                 edges=self.game_edges)
-
     def on_enter(self, *args):
         log_str = 'start,'
         log_str += 'duration=' + str(self.curiosity_game.game_duration) + ','
@@ -62,6 +61,9 @@ class GameScreen(Screen):
         KL.log.insert(action=LogAction.data, obj='game_'+str(self.game_number), comment=log_str)
 
         Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
+        self.curiosity_game.load(network=self.game_network,
+                                 questions=self.game_questions,
+                                 edges=self.game_edges)
         self.curiosity_game.start()
 
     def end_game(self, dt):
@@ -94,11 +96,11 @@ class CuriosityGame:
 
     def __init__(self, game_screen=None):
         self.game_screen = game_screen
-        self.the_widget = CuriosityWidget()
+        self.the_widget = CuriosityWidget(self)
         self.network = TheNetwork(self)
 
     def load(self, network=None, questions=None, edges=None):
-        self.network.load(network_dict=network,questions=questions, edges=edges)
+        self.network.load(network_dict=network,questions=questions, edges=edges, app_size=self.the_widget.size)
         self.the_widget.update_background(self.network.background)
         self.refresh_network()
 
@@ -142,7 +144,30 @@ class CuriosityGame:
             if concept['visible']:
                 self.the_widget.add_widget(concept['widget'])
                 self.discovered_network.add((c_name, 'visible'))
+        for c_name, concept in self.network.concepts.items():
+            if concept['new']:
+                # move to
+                new_position = deepcopy(concept['widget'].image_id.pos)
+                concept['widget'].image_id.pos = self.network.concepts[concept['new']]['widget'].image_id.pos
+                anim = Animation(x=new_position[0], y=new_position[1], duration=1)
+                anim.start(concept['widget'].image_id)
+                self.check_animation(concept)
+                # # blink
+                # concept['widget'].image_id.color = (0,0,0,0)
+                # Clock.schedule_once(partial(self.new_concept, concept), 0.5)
+
+            concept['new'] = None
         print(self.discovered_network)
+
+    def check_animation(self, concept):
+        if len(concept['image']) > 1:
+            Clock.schedule_once(partial(self.do_animation, concept, 1), 0.2)
+
+    def do_animation(self, concept, t, dt):
+        if t < 10:
+            concept['widget'].image_id.source = self.network.image_dir + concept['image'][t % len(concept['image'])]
+            Clock.schedule_once(partial(self.do_animation, concept, t + 1), 0.2)
+
 
     def start(self):
         # set the timer of the game
@@ -163,11 +188,14 @@ class CuriosityGame:
             }
         }
 
+
 class CuriosityWidget(FloatLayout):
     cg_lbl = None
+    the_game = None
 
-    def __init__(self):
+    def __init__(self, the_game=None):
         super(CuriosityWidget, self).__init__()
+        self.the_game = the_game
         with self.canvas.before:
             self.rect = Rectangle(source='')
             self.bind(size=self._update_rect, pos=self._update_rect)
@@ -185,3 +213,4 @@ class CuriosityWidget(FloatLayout):
     def _update_rect(self, instance, value):
         self.rect.pos = instance.pos
         self.rect.size = instance.size
+        self.the_game.network.update_pos_size(instance.size)
