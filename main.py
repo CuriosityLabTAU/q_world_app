@@ -35,7 +35,9 @@ class QWorldApp(App):
         print(concepts_json.keys())
         for i_net, net in enumerate(concepts_json.get("sequence")):
             self.game_screen.append(GameScreen(name='game_' + str(i_net)))
-            self.game_screen[-1].start(number=i_net, the_app=self, the_type=(net['type'], net['n']), duration=net['duration'],
+            self.game_screen[-1].start(number=i_net, the_app=self, the_type=(net['type'], net['n']),
+                                       duration=net['duration'],
+                                       introduction=net['introduction'],
                                        network=deepcopy(concepts_json.get(net['network'])),
                                        questions=deepcopy(concepts_json.get('questions')),
                                        edges=deepcopy(concepts_json.get('edges')))

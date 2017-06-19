@@ -4,7 +4,38 @@
       "network": "network_1",
       "type" : "full",
       "n": 0,
-      "duration": 60
+      "duration": 60,
+      "introduction": ["you are space travelers, exploring alien worlds. you can tap each object you discover to ask specific questions on it. you have landed at your first planet. you have sixty seconds to learn about it", "introduction_1.wav"]
+    },
+    {
+      "network": "network_2",
+      "type" : "full",
+      "n": 0,
+      "duration": 60,
+      "introduction": ["you have reached a new planet. you can tap each object you discover to ask specific questions on it. you have sixty seconds to learn about this planet","introduction_2.wav"]
+
+    },
+    {
+      "network": "network_3",
+      "type" : "n_questions",
+      "n": 5,
+      "duration": 60,
+      "introduction": ["you have reached your third planet. you are in a hurry and have time to ask only five questions. choose them carefully.","introduction_3.wav"]
+    },
+    {
+      "network": "network_4",
+      "type" : "n_type",
+      "n": 1,
+      "duration": 60,
+      "introduction": ["a new planet appears. you have limited access to knowledge about it. you can select a single question type, such as how, what or why, and find out only about it.",
+        "introduction_4.wav"]
+    },
+    {
+      "network": "network_5",
+      "type" : "full",
+      "n": 0,
+      "duration": 60,
+      "introduction": ["space travelers, you have reached the final planet. you have sixty seconds to learn about it before returning home.","introduction_5.wav"]
     }
   ],
   "questions": {
@@ -14,25 +45,99 @@
     },
     "what": {
       "image": "what.png",
-      "pos": 0.1
+      "pos": 0.1,
+      "explanation": ["whenever you press the what button, you get information about the question what is this made out of",
+      "what_explanation.wav"]
     },
     "how": {
       "image": "how.png",
-      "pos": 0.0
+      "pos": 0.0,
+      "explanation": ["whenever you press the how button, you get information about the question how does this work",
+      "how_explanation.wav"]
     },
     "why": {
       "image": "why.png",
-      "pos": 0.2
+      "pos": 0.2,
+      "explanation": ["whenever you press the why button, you get information about the question why is it here",
+      "why_explanation.wav"]
     }
   },
+  "edges": [
+    { "source": "alien", "edge": "q1", "target": ["concept_1_1", "concept_1_2", "concept_1_3", "concept_1_4"]},
+    { "source": "alien", "edge": "q2", "target": ["concept_2_1"]},
+    { "source": "alien", "edge": "q3", "target": ["concept_3_1", "concept_3_2"]},
+    { "source": "concept_2_1", "edge": "q1", "target": ["concept_1_1", "concept_1_3"]},
+    { "source": "concept_2_1", "edge": "q2", "target": ["concept_4_1"]},
+    { "source": "concept_2_1", "edge": "q3", "target": ["concept_3_1", "concept_3_3"]},
+
+    { "source": "plant", "edge": "q1", "target": ["concept_1_1", "concept_1_3", "concept_1_4", "concept_1_5"]},
+    { "source": "plant", "edge": "q2", "target": ["concept_2_2"]},
+    { "source": "plant", "edge": "q3", "target": ["concept_3_3", "concept_3_4"]},
+    { "source": "concept_2_2", "edge": "q1", "target": ["concept_1_1", "concept_1_3"]},
+    { "source": "concept_2_2", "edge": "q2", "target": ["concept_4_2"]},
+    { "source": "concept_2_2", "edge": "q3", "target": ["concept_3_4", "concept_3_5"]},
+
+    { "source": "tech", "edge": "q1", "target": ["concept_1_1", "concept_1_2", "concept_1_3", "concept_1_5"]},
+    { "source": "tech", "edge": "q2", "target": ["concept_2_3"]},
+    { "source": "tech", "edge": "q3", "target": ["concept_3_1", "concept_3_4"]},
+    { "source": "concept_2_3", "edge": "q1", "target": ["concept_1_2", "concept_1_4"]},
+    { "source": "concept_2_3", "edge": "q2", "target": ["concept_4_3"]},
+    { "source": "concept_2_3", "edge": "q3", "target": ["concept_3_3", "concept_3_5"]}
+  ],
   "network_1": {
     "dir": "items/world1/",
     "background": "background1.png",
+    "story": {
+      "what,why,how": {
+        "alien,what": ["the aliens are made of four different types of colorful cells", "ayh_alien_what.wav"],
+        "alien,why": ["the aliens are here to build their grand city in the hills", "ayh_alien_why.wav"],
+        "alien,how": ["the aliens work by channeling the flow between two orbs", "ayh_alien_how.wav"],
+        "reason_1,what": ["the grand city is made of two different types of colorful cells", "ayh_reason_1_what.wav"],
+        "reason_1,why": ["the grand city is built to make the aliens happy", "ayh_reason_1_why.wav"],
+        "reason_1,how": ["the city works by channeling the flow between two orbs", "ayh_reason_1_how.wav"],
+
+        "plant,what": ["the plants are made of four different types of colorful cells", "ayh_plant_what.wav"],
+        "plant,why": ["the plants are here to shade the green city", "ayh_plant_why.wav"],
+        "plant,how": ["the plants work by channeling the flow between two orbs", "ayh_plant_how.wav"],
+        "reason_2,what": ["the green city is made of two different types of colorful cells", "ayh_reason_3_what.wav"],
+        "reason_2,why": ["the green city is here to protect from the nasty animals", "ayh_reason_3_why.wav"],
+        "reason_2,how": ["the green city works by channeling the flow between two orbs", "ayh_reason_3_how.wav"],
+
+        "tech,what": ["the spaceship is made of four different types of colorful cells", "ayh_tech_what.wav"],
+        "tech,why": ["the spaceship is here to transport aliens from the grey city", "ayh_tech_why.wav"],
+        "tech,how": ["the spaceship works by channeling the flow between two orbs", "ayh_tech_how.wav"],
+        "reason_3,what": ["the grey city is made of two different types of colorful cells", "ayh_reason_5_what.wav"],
+        "reason_3,why": ["the grey city is here to take the aliens to the moon", "ayh_reason_5_why.wav"],
+        "reason_3,how": ["the grey city works by channeling the flow between two orbs", "ayh_reason_5 _how.wav"]
+      },
+      "how,what,why": {
+        "alien,what": ["the aliens are made of four different types of colorful cells", "hay_alien_what.wav"],
+        "alien,why": ["the aliens are here to build their grand city in the hills", "alien_why.wav"],
+        "alien,how": ["the aliens work by channeling the flow between two orbs", "alien_how.wav"],
+        "concept_2_1,what": ["the city is made of two different types of colorful cells", "concept_2_1_what.wav"],
+        "concept_2_1,why": ["the grand city is built to make the aliens happy", "concept_2_1_why.wav"],
+        "concept_2_1,how": ["the city works by channeling the flow between two orbs", "concept_2_1_how.wav"],
+
+        "plant,what": ["the plants are made of four different types of colorful cells", "plant_what.wav"],
+        "plant,why": ["the plants are here to feed the cute animals", "plant_why.wav"],
+        "plant,how": ["the plants work by channeling the flow between two orbs", "plant_how.wav"],
+        "concept_2_3,what": ["the cute animals are made of two different types of colorful cells", "concept_2_3_what.wav"],
+        "concept_2_3,why": ["the cute animals are here to feed to nasty animals", "concept_2_3_why.wav"],
+        "concept_2_3,how": ["the cute animals work by channeling the flow between two orbs", "concept_2_3_how.wav"],
+
+        "tech,what": ["the spaceship is made of four different types of colorful cells", "tech_what.wav"],
+        "tech,why": ["the spaceship are here to take the aliens to the cloud ", "tech_why.wav"],
+        "tech,how": ["the spaceship works by channeling the flow between two orbs", "tech_how.wav"],
+        "concept_2_5,what": ["the clouds are made of two different types of colorful cells", "concept_2_5_what.wav"],
+        "concept_2_5,why": ["the clouds are here to protect the aliens from the sun", "concept_2_5_why.wav"],
+        "concept_2_5,how": ["the clouds work by channeling the flow between two orbs", "concept_2_5 _how.wav"]
+      }
+    },
     "concepts": {
       "alien": {
         "image": ["alien1.png"],
         "pos": "0.46,0.23",
-        "size": "0.1,0.1",
+        "size": "0.3,0.3",
         "level": 1
       },
       "plant": {
@@ -77,6 +182,24 @@
         "size": "0.1, 0.1",
         "level": 2
       },
+      "part_extend_1": {
+        "image": ["what_cell9.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_2": {
+        "image": ["what_cell9.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_3": {
+        "image": ["what_cell9.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
       "reason_1": {
         "image": ["app1_all_city_2.png"],
         "pos": "0.02,0.50",
@@ -84,109 +207,1076 @@
         "level": 2
       },
       "reason_2": {
+        "image": ["app1_all_city_2.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_3": {
+        "image": ["app1_all_city_1.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_4": {
+        "image": ["app1_all_city_2.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_5": {
+        "image": ["app1_all_city_2.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_extend_1": {
         "image": ["smiley_face.png"],
         "pos": "0.4,0.09",
         "size": "0.2, 0.2",
         "level": 3
       },
-      "reason_3": {
-        "image": ["animal3.png"],
-        "pos": "0.04,0.19",
-        "size": "0.2, 0.2",
-        "level": 2
-      },
-      "reason_4": {
+      "reason_extend_2": {
         "image": ["aligator.png"],
         "pos": "0.04,0.35",
         "size": "0.15, 0.15",
         "level": 3
       },
-      "reason_5": {
+      "reason_extend_3": {
         "image": ["moon.png"],
         "pos": "0.72,0.76",
         "size": "0.2, 0.2",
         "level": 2
       },
-      "reason_6": {
-        "image": ["sun.png"],
-        "pos": "0.35,0.73",
-        "size": "0.2, 0.2",
-        "level": 3
-      },
       "process_1": {
         "image": ["how_1_1.png","how_1_2.png"],
-        "pos": "0.3,0.2",
-        "size": "0.2, 0.2",
+        "pos": "0.7,0.2",
+        "size": "0.1, 0.1",
         "level": 2
       },
       "process_2": {
-        "image": ["how_1_1.png","how_1_2.png"],
-        "pos": "0.3,0.2",
-        "size": "0.2, 0.2",
+        "image": ["how_2_2.png","how_2_1.png"],
+        "pos": "0.8,0.3",
+        "size": "0.1, 0.1",
         "level": 2
       },
       "process_3": {
-        "image": ["how_1_1.png","how_1_2.png"],
-        "pos": "0.3,0.2",
-        "size": "0.2, 0.2",
+        "image": ["how_3_2.png","how_3_1.png"],
+        "pos": "0.9,0.2",
+        "size": "0.1, 0.1",
         "level": 2
       },
       "process_4": {
-        "image": ["how_1_1.png","how_1_2.png"],
-        "pos": "0.3,0.2",
-        "size": "0.2, 0.2",
+        "image": ["how_4_2.png","how_4_1.png"],
+        "pos": "0.85,0.1",
+        "size": "0.1, 0.1",
         "level": 2
       },
       "process_5": {
-        "image": ["how_1_1.png","how_1_2.png"],
-        "pos": "0.3,0.2",
+        "image": ["how_5_2.png","how_5_1.png"],
+        "pos": "0.75,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_extend_1": {
+        "image": ["moon.png"],
+        "pos": "0.72,0.76",
         "size": "0.2, 0.2",
         "level": 2
       },
-      "process_6": {
-        "image": ["how_1_1.png","how_1_2.png"],
-        "pos": "0.3,0.2",
+      "process_extend_2": {
+        "image": ["moon.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_3": {
+        "image": ["moon.png"],
+        "pos": "0.72,0.76",
         "size": "0.2, 0.2",
         "level": 2
       }
     }
   },
-  "edges": [
-    "alien,what,part_1",
-   "alien,what,part_2",
-    "alien,what,part_3",
-    "alien,what,part_4",
-    "alien,why,reason_1",
-    "alien,how,process_1",
-    "alien,how,process_2",
-    "reason_1,what,part_1",
-    "reason_1,what,part_3",
-    "reason_1,why,reason_2",
-    "reason_1,how,process_1",
-    "reason_1,how,process_3",
-    "plant,what,part_1",
-    "plant,what,part_3",
-    "plant,what,part_4",
-    "plant,what,part_5",
-    "plant,why,reason_3",
-    "plant,how,process_3",
-    "plant,how,process_4",
-    "reason_3,what,part_1",
-    "reason_3,what,part_3",
-    "reason_3,why,reason_4",
-    "reason_3,how,process_4",
-    "reason_3,how,process_5",
-    "tech,what,part_1",
-    "tech,what,part_2",
-    "tech,what,part_3",
-    "tech,what,part_5",
-    "tech,why,reason_5",
-    "tech,how,process_1",
-    "tech,how,process_4",
-    "reason_5,what,part_2",
-    "reason_5,what,part_4",
-    "reason_5,why,reason_6",
-    "reason_5,how,process_3",
-    "reason_5,how,process_5"
-  ]
+  "network_2": {
+    "dir": "items/world2/",
+    "background": "app2_background.png",
+    "story":
+    {
+      "what,why,how": {
+        "alien,what": [
+          "the aliens are made of different circular objects",
+          "alien_what.wav"
+        ],
+        "alien,why": [
+          "the aliens are here because their world was destroyed",
+          "alien_why.wav"
+        ],
+        "alien,how": [
+          "the aliens work by rotating discs",
+          "alien_how.wav"
+        ],
+        "reason_1,what": [
+          "their planet was made of two different circular objects",
+          "reason_1_what.wav"
+        ],
+        "reason_1,why": [
+          "their old planet was destroyed by a powerful weapon",
+          "reason_1_why.wav"
+        ],
+        "reason_1,how": [
+          "the planet was maintained by rotating discs",
+          "reason_1_how.wav"
+        ],
+        "plant,what": [
+          "the trees are made of four different types of circular objects",
+          "plant_what.wav"
+        ],
+        "plant,why": [
+          "the plants are here to feed the cute animals",
+          "plant_why.wav"
+        ],
+        "plant,how": [
+          "the plants work by rotating discs",
+          "plant_how.wav"
+        ],
+        "reason_2,what": [
+          "the cute animals are made of  different types of circular objects",
+          "reason_3_what.wav"
+        ],
+        "reason_2,why": [
+          "the cute animals are here produce crystals",
+          "reason_3_why.wav"
+        ],
+        "reason_2,how": [
+          "the cute animals work by rotating discs",
+          "reason_3_how.wav"
+        ],
+        "tech,what": [
+          "the spaceship is made of four different circular objects",
+          "tech_what.wav"
+        ],
+        "tech,why": [
+          "the spaceship is here to transport aliens to the spaceport",
+          "tech_why.wav"
+        ],
+        "tech,how": [
+          "the spaceship work by rotating discs",
+          "tech_how.wav"
+        ],
+        "reason_3,what": [
+          "the spaceport is made of different circular objects",
+          "reason_5_what.wav"
+        ],
+        "reason_3,why": [
+          "the spaceport is here to bring asteroid minerals to the factories",
+          "reason_5_why.wav"
+        ],
+        "reason_3,how": [
+          "the spaceport work by rotating discs",
+          "reason_5_how.wav"
+        ]
+      }
+    },
+    "concepts": {
+      "alien": {
+        "image": ["alien.png"],
+        "pos": "0.46,0.23",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "plant": {
+        "image": ["plant.png"],
+        "pos": "0.11,0.27",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "tech": {
+        "image": ["tech.png"],
+        "pos": "0.79,0.59",
+        "size": "0.2,0.2",
+        "level": 1
+      },
+      "part_1": {
+        "image": ["what_cell3.png"],
+        "pos": "0.2,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_2": {
+        "image": ["what_cell6.png"],
+        "pos": "0.35,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_3": {
+        "image": ["what_cell10.png"],
+        "pos": "0.5,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_4": {
+        "image": ["what_cell13.png"],
+        "pos": "0.65,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_5": {
+        "image": ["what_cell15.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_1": {
+        "image": ["what_cell3.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_2": {
+        "image": ["what_cell3.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_3": {
+        "image": ["what_cell3.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "reason_1": {
+        "image": ["origin_planet.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_2": {
+        "image": ["animal2_6.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_3": {
+        "image": ["structures15.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_4": {
+        "image": ["crystals4.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_5": {
+        "image": ["app1_all_city_2.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_extend_1": {
+        "image": ["weapon.png"],
+        "pos": "0.4,0.09",
+        "size": "0.2, 0.2",
+        "level": 3
+      },
+      "reason_extend_2": {
+        "image": ["crystals4.png"],
+        "pos": "0.04,0.35",
+        "size": "0.15, 0.15",
+        "level": 3
+      },
+      "reason_extend_3": {
+        "image": ["structures9.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_1": {
+        "image": ["how_1_1.png","how_1_2.png"],
+        "pos": "0.7,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_2": {
+        "image": ["how_5_1.png","how_5_2.png"],
+        "pos": "0.8,0.3",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_3": {
+        "image": ["how_2.png"],
+        "pos": "0.9,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_4": {
+        "image": ["how_3.png"],
+        "pos": "0.85,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_5": {
+        "image": ["how_4.png"],
+        "pos": "0.75,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_extend_1": {
+        "image": ["moon.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_2": {
+        "image": ["moon.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_3": {
+        "image": ["moon.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      }
+    }
+  },
+  "network_3": {
+    "dir": "items/world3/",
+    "background": "backg.png",
+    "story":
+    {
+      "what,why,how": {
+        "alien,what": [
+          "the aliens are made of different geometrical shapes",
+          "alien_what.wav"
+        ],
+        "alien,why": [
+          "the aliens are here to build the cube",
+          "alien_why.wav"
+        ],
+        "alien,how": [
+          "the aliens work by colorful processes",
+          "alien_how.wav"
+        ],
+        "reason_1,what": [
+          "the cube is made of different geometrical shapes",
+          "reason_1_what.wav"
+        ],
+        "reason_1,why": [
+          "the cube is here to help take over all worlds",
+          "reason_1_why.wav"
+        ],
+        "reason_1,how": [
+          "the cube work by internal colorful processes",
+          "reason_1_how.wav"
+        ],
+        "plant,what": [
+          "the flowers are made of different geometrical shapes",
+          "plant_what.wav"
+        ],
+        "plant,why": [
+          "the flowers are here to combat the factories pollution",
+          "plant_why.wav"
+        ],
+        "plant,how": [
+          "the flowers work by internal colorful processes",
+          "plant_how.wav"
+        ],
+        "reason_2,what": [
+          "the factories are composed of different geometrical shapes",
+          "reason_3_what.wav"
+        ],
+        "reason_2,why": [
+          "the factories are here to generate energy",
+          "reason_3_why.wav"
+        ],
+        "reason_2,how": [
+          "the factories work by internal colorful processes",
+          "reason_3_how.wav"
+        ],
+        "tech,what": [
+          "the weapon is made of different geometrical shapes",
+          "tech_what.wav"
+        ],
+        "tech,why": [
+          "the weapon is here to blast rocks",
+          "tech_why.wav"
+        ],
+        "tech,how": [
+          "the weapon work by colorful dynamic processes",
+          "tech_how.wav"
+        ],
+        "reason_3,what": [
+          "the rocks are made of different geometrical shapes",
+          "reason_5_what.wav"
+        ],
+        "reason_3,why": [
+          "the rocks are here to protect the wild creatures",
+          "reason_5_why.wav"
+        ],
+        "reason_3,how": [
+          "the rocks work by colorful dynamic processes",
+          "reason_5_how.wav"
+        ]
+      }
+    },
+    "concepts": {
+      "alien": {
+        "image": ["alien.png"],
+        "pos": "0.46,0.23",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "plant": {
+        "image": ["plant.png"],
+        "pos": "0.11,0.27",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "tech": {
+        "image": ["tech.png"],
+        "pos": "0.79,0.59",
+        "size": "0.2,0.2",
+        "level": 1
+      },
+      "part_1": {
+        "image": ["geometrical_shapes1.png"],
+        "pos": "0.2,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_2": {
+        "image": ["geometrical_shapes4.png"],
+        "pos": "0.35,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_3": {
+        "image": ["geometrical_shapes7.png"],
+        "pos": "0.5,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_4": {
+        "image": ["geometrical_shapes9.png"],
+        "pos": "0.65,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_5": {
+        "image": ["geometrical_shapes10.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_1": {
+        "image": ["geometrical_shapes1.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_2": {
+        "image": ["geometrical_shapes1.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_3": {
+        "image": ["geometrical_shapes1.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "reason_1": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_2": {
+        "image": ["plant_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_3": {
+        "image": ["tech_reason_1.png", "tech_reason_2.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_4": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_5": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_extend_1": {
+        "image": ["cube_reason.png"],
+        "pos": "0.4,0.09",
+        "size": "0.2, 0.2",
+        "level": 3
+      },
+      "reason_extend_2": {
+        "image": ["factory_reason.png"],
+        "pos": "0.04,0.35",
+        "size": "0.15, 0.15",
+        "level": 3
+      },
+      "reason_extend_3": {
+        "image": ["rock_reason.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_1": {
+        "image": ["what_cell3.png"],
+        "pos": "0.7,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_2": {
+        "image": ["what_cell5png.png"],
+        "pos": "0.8,0.3",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_3": {
+        "image": ["what_cell7png.png"],
+        "pos": "0.9,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_4": {
+        "image": ["what_cell9png.png"],
+        "pos": "0.85,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_5": {
+        "image": ["what_cell8png.png"],
+        "pos": "0.75,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_extend_1": {
+        "image": ["what_cell8png.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_2": {
+        "image": ["what_cell8png.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_3": {
+        "image": ["what_cell8png.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      }
+    }
+  },
+  "network_4": {
+    "dir": "items/world4/",
+    "background": "app4_background.png",
+    "story":
+    {
+      "what,why,how": {
+        "alien,what": [
+          "the aliens are made of different electrical components",
+          "alien_what.wav"
+        ],
+        "alien,why": [
+          "the aliens are here to evolve to chips",
+          "alien_why.wav"
+        ],
+        "alien,how": [
+          "the aliens work by electrical and mechanical process",
+          "alien_how.wav"
+        ],
+        "reason_1,what": [
+          "the chips are made of different electrical components",
+          "reason_1_what.wav"
+        ],
+        "reason_1,why": [
+          "the chips are here to enable high processing power",
+          "reason_1_why.wav"
+        ],
+        "reason_1,how": [
+          "the chips work by electrical and mechanical process",
+          "reason_1_how.wav"
+        ],
+        "plant,what": [
+          "the robotic plants are made of electrical components",
+          "plant_what.wav"
+        ],
+        "plant,why": [
+          "the plants are here to enable light manipulation",
+          "plant_why.wav"
+        ],
+        "plant,how": [
+          "the robotic plants work by electrical and mechanical process",
+          "plant_how.wav"
+        ],
+        "reason_2,what": [
+          "the light catchers are made of electrical components",
+          "reason_3_what.wav"
+        ],
+        "reason_2,why": [
+          "the the light catchers are here to harvest the sun",
+          "reason_3_why.wav"
+        ],
+        "reason_2,how": [
+          "the light catchers work by electrical and mechanical process",
+          "reason_3_how.wav"
+        ],
+        "tech,what": [
+          "the telecsope is made of electrical components",
+          "tech_what.wav"
+        ],
+        "tech,why": [
+          "the telescope is here to discover new technologies",
+          "tech_why.wav"
+        ],
+        "tech,how": [
+          "the telescope work by electrical and mechanical process",
+          "tech_how.wav"
+        ],
+        "reason_3,what": [
+          "the new technologies are made of different electrical components",
+          "reason_5_what.wav"
+        ],
+        "reason_3,why": [
+          "the new technologies are here to take the aliens to the stars",
+          "reason_5_why.wav"
+        ],
+        "reason_3,how": [
+          "the new technologies also work by electrical and mechanical process",
+          "reason_5_how.wav"
+        ]
+      }
+    },
+    "concepts": {
+      "alien": {
+        "image": ["alien_app4.png"],
+        "pos": "0.46,0.23",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "plant": {
+        "image": ["plant_app4.png"],
+        "pos": "0.11,0.27",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "tech": {
+        "image": ["tech_app4.png"],
+        "pos": "0.79,0.59",
+        "size": "0.2,0.2",
+        "level": 1
+      },
+      "part_1": {
+        "image": ["electrical_comp2.png"],
+        "pos": "0.2,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_2": {
+        "image": ["electrical_comp3.png"],
+        "pos": "0.35,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_3": {
+        "image": ["electrical_comp8.png"],
+        "pos": "0.5,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_4": {
+        "image": ["electrical_comp10.png"],
+        "pos": "0.65,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_5": {
+        "image": ["electrical_comp12.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_1": {
+        "image": ["electrical_comp2.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_2": {
+        "image": ["electrical_comp2.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_3": {
+        "image": ["electrical_comp2.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "reason_1": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_2": {
+        "image": ["plant_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_3": {
+        "image": ["tech_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_4": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_5": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_extend_1": {
+        "image": ["chip_reason.png"],
+        "pos": "0.4,0.09",
+        "size": "0.2, 0.2",
+        "level": 3
+      },
+      "reason_extend_2": {
+        "image": ["light_reason.png"],
+        "pos": "0.04,0.35",
+        "size": "0.15, 0.15",
+        "level": 3
+      },
+      "reason_extend_3": {
+        "image": ["technologies_reason.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_1": {
+        "image": ["processes2.png"],
+        "pos": "0.7,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_2": {
+        "image": ["processes3.png"],
+        "pos": "0.8,0.3",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_3": {
+        "image": ["processes4.png"],
+        "pos": "0.9,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_4": {
+        "image": ["processes5.png"],
+        "pos": "0.85,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_5": {
+        "image": ["processes6.png"],
+        "pos": "0.75,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_extend_1": {
+        "image": ["processes2.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_2": {
+        "image": ["processes2.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_3": {
+        "image": ["processes2.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      }
+    }
+  },
+  "network_5": {
+    "dir": "items/world5/",
+    "background": "app5_backg.png",
+    "story":
+    {
+      "what,why,how": {
+        "alien,what": [
+          "the aliens are made of crystals",
+          "alien_what.wav"
+        ],
+        "alien,why": [
+          "the aliens are here to build the ultimate factory",
+          "alien_why.wav"
+        ],
+        "alien,how": [
+          "the aliens work by spiraling rainbow processes",
+          "alien_how.wav"
+        ],
+        "reason_1,what": [
+          "the ultimate factory is built out of crystals",
+          "reason_1_what.wav"
+        ],
+        "reason_1,why": [
+          "the factory is here to produce the pyramid crystal",
+          "reason_1_why.wav"
+        ],
+        "reason_1,how": [
+          "the factory work by harnessing the rainbow processes",
+          "reason_1_how.wav"
+        ],
+        "plant,what": [
+          "the thorny plants are made out of crystals",
+          "plant_what.wav"
+        ],
+        "plant,why": [
+          "the thorny plants are here to protect against predators",
+          "plant_why.wav"
+        ],
+        "plant,how": [
+          "the plants work by internal rainbow processes",
+          "plant_how.wav"
+        ],
+        "reason_2,what": [
+          "the predators are made out of crystals",
+          "reason_3_what.wav"
+        ],
+        "reason_2,why": [
+          "the predators are here to eat all the birds",
+          "reason_3_why.wav"
+        ],
+        "reason_2,how": [
+          "the predators work by internal dynamic processes",
+          "reason_3_how.wav"
+        ],
+        "tech,what": [
+          "the spacecraft is made out of crystals",
+          "tech_what.wav"
+        ],
+        "tech,why": [
+          "the spacecraft is here to transport endangered species",
+          "tech_why.wav"
+        ],
+        "tech,how": [
+          "the spacecraft works by harnessing the rainbow processes",
+          "tech_how.wav"
+        ],
+        "reason_3,what": [
+          "the endangered species are made out of crystals",
+          "reason_5_what.wav"
+        ],
+        "reason_3,why": [
+          "the endangered species are dwindeling because of polluting factories",
+          "reason_5_why.wav"
+        ],
+        "reason_3,how": [
+          "the endangered species work by internal spiraling processes",
+          "reason_5_how.wav"
+        ]
+      }
+    },
+    "concepts": {
+      "alien": {
+        "image": ["app5_alien.png"],
+        "pos": "0.46,0.23",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "plant": {
+        "image": ["app5_plant.png"],
+        "pos": "0.11,0.27",
+        "size": "0.3,0.3",
+        "level": 1
+      },
+      "tech": {
+        "image": ["app5_TECH.png"],
+        "pos": "0.79,0.59",
+        "size": "0.2,0.2",
+        "level": 1
+      },
+      "part_1": {
+        "image": ["crystals5_1.png"],
+        "pos": "0.2,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_2": {
+        "image": ["crystals6_1.png"],
+        "pos": "0.35,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_3": {
+        "image": ["crystals7.png"],
+        "pos": "0.5,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_4": {
+        "image": ["crystals10.png"],
+        "pos": "0.65,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_5": {
+        "image": ["crystals12.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_1": {
+        "image": ["crystals7.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_2": {
+        "image": ["crystals7.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "part_extend_3": {
+        "image": ["crystals7.png"],
+        "pos": "0.8,0.6",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "reason_1": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_2": {
+        "image": ["plant_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_3": {
+        "image": ["spaceship_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_4": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_5": {
+        "image": ["alien_reason.png"],
+        "pos": "0.02,0.50",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "reason_extend_1": {
+        "image": ["factory_reason.png"],
+        "pos": "0.4,0.09",
+        "size": "0.2, 0.2",
+        "level": 3
+      },
+      "reason_extend_2": {
+        "image": ["predator_reason.png"],
+        "pos": "0.04,0.35",
+        "size": "0.15, 0.15",
+        "level": 3
+      },
+      "reason_extend_3": {
+        "image": ["whale_reason.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_1": {
+        "image": ["what_cell _2.png"],
+        "pos": "0.7,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_2": {
+        "image": ["what_cell1.png"],
+        "pos": "0.8,0.3",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_3": {
+        "image": ["what_cell8png.png"],
+        "pos": "0.9,0.2",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_4": {
+        "image": ["what_cell20.png"],
+        "pos": "0.85,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_5": {
+        "image": ["what_cell21.png"],
+        "pos": "0.75,0.1",
+        "size": "0.1, 0.1",
+        "level": 2
+      },
+      "process_extend_1": {
+        "image": ["what_cell21.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_2": {
+        "image": ["what_cell21.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      },
+      "process_extend_3": {
+        "image": ["what_cell21.png"],
+        "pos": "0.72,0.76",
+        "size": "0.2, 0.2",
+        "level": 2
+      }
+    }
+  }
+
 }

@@ -25,18 +25,20 @@ class GameScreen(Screen):
     the_app = None
     game_type = None
     game_duration = 120
+    game_introduction = ""
 
     game_network = None
     game_questions = None
     game_edges = None
 
-    def start(self, number=-1, the_app=None, the_type=None, duration=120,
+    def start(self, number=-1, the_app=None, the_type=None, duration=120, introduction="",
               network=None, questions=None, edges=None):
         self.size = (200,100)
         self.game_number = number
         self.the_app = the_app
         self.game_type = the_type
         self.game_duration = duration
+        self.game_introduction = introduction
 
         self.game_network = network
         self.game_questions = questions
@@ -44,11 +46,11 @@ class GameScreen(Screen):
 
         self.curiosity_game = CuriosityGame(self)
         self.curiosity_game.game_duration = duration
-        if the_type[0] == 'full':
+        if self.game_type[0] == 'full':
             pass
-        elif the_type[0] == 'n_questions':
+        elif self.game_type[0] == 'n_questions':
             self.curiosity_game.game_questions = the_type[1]
-        elif the_type[0] == 'n_type':
+        elif self.game_type[0] == 'n_type':
             self.curiosity_game.game_q_type = ['' for i in range(the_type[1])]
 
         if self.game_number == 0:
@@ -60,10 +62,14 @@ class GameScreen(Screen):
         log_str += 'questions=' + str(self.curiosity_game.game_questions)
         KL.log.insert(action=LogAction.data, obj='game_'+str(self.game_number), comment=log_str)
 
-        Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
         self.curiosity_game.load(network=self.game_network,
                                  questions=self.game_questions,
                                  edges=self.game_edges)
+        Clock.schedule_once(self.explanation_screen, 0.5)
+
+    def explanation_screen(self, dt):
+        self.curiosity_game.tell_story(self.game_introduction[0], self.game_introduction[1])
+        Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
         self.curiosity_game.start()
 
     def end_game(self, dt):
@@ -102,7 +108,6 @@ class CuriosityGame:
     def load(self, network=None, questions=None, edges=None):
         self.network.load(network_dict=network,questions=questions, edges=edges, app_size=self.the_widget.size)
         self.the_widget.update_background(self.network.background)
-        self.refresh_network()
 
     def concept_pressed(self, concept_name):
         self.the_widget.clear_widgets()
@@ -114,7 +119,8 @@ class CuriosityGame:
 
         if self.tutorial:
             if self.explanations['concept_pressed']['repeats'] > 0:
-                self.explanations['concept_pressed']['sound'].play()
+                self.tell_story(self.explanations['concept_pressed']['text'],
+                                self.explanations['concept_pressed']['sound'])
                 self.explanations['concept_pressed']['repeats'] -= 1
 
     def question_pressed(self, question):
@@ -135,7 +141,8 @@ class CuriosityGame:
 
         if self.tutorial:
             if self.explanations['question_pressed']['repeats'] > 0:
-                self.explanations['question_pressed']['sound'].play()
+                self.tell_story(self.explanations['question_pressed']['text'],
+                                self.explanations['question_pressed']['sound'])
                 self.explanations['question_pressed']['repeats'] -= 1
 
     def refresh_network(self):
@@ -168,6 +175,12 @@ class CuriosityGame:
             concept['widget'].image_id.source = self.network.image_dir + concept['image'][t % len(concept['image'])]
             Clock.schedule_once(partial(self.do_animation, concept, t + 1), 0.2)
 
+    def tell_story(self, text=None, story_file=None):
+        sound = SoundLoader.load(story_file)
+        if sound.length > 0:
+            sound.play()
+        else:
+            TTS.speak([text])
 
     def start(self):
         # set the timer of the game
@@ -180,11 +193,13 @@ class CuriosityGame:
         self.explanations = {
             'concept_pressed': {
                 'repeats': 3,
-                'sound': SoundLoader.load('items/concept_press_explanation.wav')
+                'sound': 'items/concept_press_explanation.wav',
+                'text': "you can ask a question on this object. what is it made of, why is it here, how does it work."
             },
             'question_pressed': {
                 'repeats': 3,
-                'sound': SoundLoader.load('items/question_press_explanation.wav')
+                'sound': 'items/question_press_explanation.wav',
+                'text': 'a new object appears. you can ask about it also.'
             }
         }
 

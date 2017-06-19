@@ -4,15 +4,20 @@ from question_widget import *
 
 class TheNetwork:
     parent_game = None
+    concept_names = {'what': 'part', 'why': 'reason', 'how': 'process',
+                     'waht2': 'part_extend', 'why2': 'reason_extend', 'how2': 'process_extend'}
 
     def __init__(self, parent_game=None):
         self.concepts = None
         self.background = ''
         self.questions = None
         self.edges = None
+        self.story = None
         self.parent_game = parent_game
         self.size = None
         self.image_dir = ''
+        self.network_type = {'q1': 'what', 'q2': 'why', 'q3': 'how', 'q4': 'why2'}
+        # self.network_type = {'q1': 'how', 'q2': 'what', 'q3': 'why', 'q4': 'extend'}
 
     def load(self, network_dict=None, questions=None, edges=None, app_size=None):
         self.questions = questions
@@ -24,11 +29,23 @@ class TheNetwork:
             self.concepts = network_dict['concepts']
             self.edges = edges
 
+            # transform concept_x_y ==> part/reason/process/extend_y
+            for edge in edges:
+                source = edge['source']
+                if source not in self.concepts:
+                    source = self.concept_names[self.network_type['q' + edge['source'][8]]] + '_' + edge['source'][-1]
+                edge['source'] = source
+                edge['target'] = [self.concept_names[self.network_type['q' + x[8]]] + '_' + x[-1] for x in edge['target']]
+            which_story = self.network_type['q1'] + ',' + \
+                          self.network_type['q2'] + ',' + \
+                          self.network_type['q3']
+            self.story = network_dict['story'][which_story]
+
             for edge in self.edges:
-                e = edge.split(',')
-                if e[1] not in self.concepts[e[0]]:
-                    self.concepts[e[0]][e[1]] = []
-                self.concepts[e[0]][e[1]].append(e[2])
+                edge_q = self.network_type[edge['edge']]
+                if edge_q not in self.concepts[edge['source']]:
+                    self.concepts[edge['source']][edge_q] = []
+                self.concepts[edge['source']][edge_q] = edge['target']
 
             self.walk_the_graph(node="alien")
 
@@ -82,6 +99,8 @@ class TheNetwork:
 
         self.parent_game.discovered_network.add((concept, question))
         self.parent_game.question_pressed(question)
+        self.parent_game.tell_story(text=self.story[concept + ',' + question][0],
+                                    story_file=self.image_dir + self.story[concept + ',' + question][1])
 
     def concept_pressed(self, concept):
         self.parent_game.discovered_network.add((concept, 'questions'))
@@ -93,10 +112,10 @@ class TheNetwork:
 
         q_str += " " + self.concepts[node]["image"][0] + " "
         next_nodes = []
-        for e in self.edges:
-            link = e.split(',')
-            if link[0] == node:
-                next_nodes.append(link[2])
-                self.walk_the_graph(q_str, link[1], link[2])
+        for link in self.edges:
+            if link['source'] == node:
+                next_nodes = link['target']
+                for n in next_nodes:
+                    self.walk_the_graph(q_str, link['edge'], n)
         if len(next_nodes) == 0:
             print(q_str)
