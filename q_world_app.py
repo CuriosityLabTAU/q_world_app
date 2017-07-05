@@ -176,10 +176,13 @@ class CuriosityGame:
             Clock.schedule_once(partial(self.do_animation, concept, t + 1), 0.2)
 
     def tell_story(self, text=None, story_file=None):
-        sound = SoundLoader.load(story_file)
-        if sound.length > 0:
-            sound.play()
-        else:
+        try:
+            sound = SoundLoader.load(story_file)
+            if sound.length > 0:
+                sound.play()
+            else:
+                TTS.speak([text])
+        except:
             TTS.speak([text])
 
     def start(self):

@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Free Exploration
+title = Questoin World
 
 # (str) Package name
-package.name = FreeExplorationApp
+package.name = qworldapp
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.gorengordon.curiosity
