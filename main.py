@@ -16,7 +16,7 @@ class ZeroScreen(Screen):
 
 class QWorldApp(App):
     game_screen = []
-    filename = 'network.json'
+    filename = 'network_new.json'
 
     def build(self):
         self.init_communication()

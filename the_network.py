@@ -81,15 +81,29 @@ class TheNetwork:
                 c['widget'].button_id.pos = c['widget'].image_id.pos
                 c['widget'].button_id.size = c['widget'].image_id.size
 
-                c['q_widget'].pos = (int(pos[0] * self.size[0]), int(pos[1] * self.size[1]))
-                c['q_widget'].size = (int(size[0] * self.size[0]), int(size[1] * self.size[1]))
+                c['q_widget'].pos = (0, 0)
+                c['q_widget'].size = (self.size[0], int(0.1 * self.size[1]))
+                i = 0
                 for q_name, q_widget in c['q_widget'].q.items():
                     q_size = [float(x) for x in self.questions['general']['size'].split(',')]
-                    q_widget['image'].pos = (int((pos[0] + self.questions['general']['pos']) * self.size[0]),
-                                             int((pos[1] + self.questions[q_name]['pos']) * self.size[1]))
                     q_widget['image'].size = (int(q_size[0] * self.size[0]), int(q_size[1] * self.size[1]))
+                    q_widget['image'].pos = (int((i * 0.3 + 0.1) * self.size[0]), # self.questions['general']['pos'] -
+                                             int(0.1 * self.size[1]))
+
                     q_widget['button'].pos = q_widget['image'].pos
                     q_widget['button'].size = q_widget['image'].size
+                    i += 1
+
+                # c['q_widget'].pos = (int(pos[0] * self.size[0]), int(pos[1] * self.size[1]))
+                # c['q_widget'].size = (int(size[0] * self.size[0]), int(size[1] * self.size[1]))
+                # for q_name, q_widget in c['q_widget'].q.items():
+                #     q_size = [float(x) for x in self.questions['general']['size'].split(',')]
+                #     q_widget['image'].size = (int(q_size[0] * self.size[0]), int(q_size[1] * self.size[1]))
+                #     q_widget['image'].pos = (int((pos[0] - q_size[0]) * self.size[0]), # self.questions['general']['pos'] -
+                #                              int((pos[1] + self.questions[q_name]['pos']) * self.size[1]))
+                #
+                #     q_widget['button'].pos = q_widget['image'].pos
+                #     q_widget['button'].size = q_widget['image'].size
 
     def question_pressed(self, concept, question):
         next_concepts = self.concepts[concept][question]
