@@ -4,14 +4,14 @@
       "network": "network_1",
       "type" : "full",
       "n": 0,
-      "duration": 120,
+      "duration": 150,
       "introduction": ["you are space travelers, exploring alien worlds. you can tap each object you discover to ask specific questions on it. you have landed at your first planet. you have sixty seconds to learn about it", "introduction_1.wav"]
     },
     {
       "network": "network_2",
       "type" : "full",
       "n": 0,
-      "duration": 60,
+      "duration": 90,
       "introduction": ["you have reached a new planet. you can tap each object you discover to ask specific questions on it. you have sixty seconds to learn about this planet","introduction_2.wav"]
 
     },
@@ -19,14 +19,14 @@
       "network": "network_3",
       "type" : "n_questions",
       "n": 5,
-      "duration": 60,
+      "duration": 120,
       "introduction": ["you have reached your third planet. you are in a hurry and have time to ask only five questions. choose them carefully.","introduction_3.wav"]
     },
     {
       "network": "network_4",
       "type" : "n_type",
       "n": 1,
-      "duration": 60,
+      "duration": 90,
       "introduction": ["a new planet appears. you have limited access to knowledge about it. you can select a single question type, such as how, what or why, and find out only about it.",
         "introduction_4.wav"]
     },
@@ -34,14 +34,14 @@
       "network": "network_5",
       "type" : "full",
       "n": 0,
-      "duration": 60,
+      "duration": 90,
       "introduction": ["space travelers, you have reached the final planet. you have sixty seconds to learn about it before returning home.","introduction_5.wav"]
     }
   ],
   "questions": {
     "general": {
-      "size": "0.1,0.1",
-      "pos": 0.05
+      "size": "0.2,0.2",
+      "pos": 0.01
     },
     "what": {
       "image": "what.png",
@@ -97,10 +97,10 @@
         "reason_1,how": ["the city works by channeling the flow between two orbs", "ayh_reason_1_how.wav"],
 
         "plant,what": ["the plants are made of four different types of colorful cells", "ayh_plant_what.wav"],
-        "plant,why": ["the plants are here to shade the green city", "ayh_plant_why.wav"],
+        "plant,why": ["the plants are here to feed the cute animals", "plant_why.wav"],
         "plant,how": ["the plants work by channeling the flow between two orbs", "ayh_plant_how.wav"],
         "reason_2,what": ["the green city is made of two different types of colorful cells", "ayh_reason_3_what.wav"],
-        "reason_2,why": ["the green city is here to protect from the nasty animals", "ayh_reason_3_why.wav"],
+        "reason_2,why": ["the cute animals are here to feed to nasty animals", "concept_2_3_why.wav"],
         "reason_2,how": ["the green city works by channeling the flow between two orbs", "ayh_reason_3_how.wav"],
 
         "tech,what": ["the spaceship is made of four different types of colorful cells", "ayh_tech_what.wav"],
@@ -201,31 +201,31 @@
         "level": 2
       },
       "reason_1": {
-        "image": ["app1_all_city_2.png"],
+        "image": ["app_all_city_2.png"],
         "pos": "0.02,0.50",
         "size": "0.2, 0.2",
         "level": 2
       },
       "reason_2": {
-        "image": ["app1_all_city_2.png"],
+        "image": ["animal3.png"],
         "pos": "0.02,0.50",
         "size": "0.2, 0.2",
         "level": 2
       },
       "reason_3": {
-        "image": ["app1_all_city_1.png"],
+        "image": ["app_all_city_1.png"],
         "pos": "0.02,0.50",
         "size": "0.2, 0.2",
         "level": 2
       },
       "reason_4": {
-        "image": ["app1_all_city_2.png"],
+        "image": ["app_all_city_2.png"],
         "pos": "0.02,0.50",
         "size": "0.2, 0.2",
         "level": 2
       },
       "reason_5": {
-        "image": ["app1_all_city_2.png"],
+        "image": ["app_all_city_2.png"],
         "pos": "0.02,0.50",
         "size": "0.2, 0.2",
         "level": 2

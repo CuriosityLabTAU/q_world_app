@@ -17,7 +17,7 @@ class TheNetwork:
         self.size = None
         self.image_dir = ''
         self.network_type = {'q1': 'what', 'q2': 'why', 'q3': 'how', 'q4': 'why2'}
-        # self.network_type = {'q1': 'how', 'q2': 'what', 'q3': 'why', 'q4': 'extend'}
+        # self.network_type = {'q1': 'how', 'q2': 'what', 'q3': 'why', 'q4': 'why2'}
 
     def load(self, network_dict=None, questions=None, edges=None, app_size=None):
         self.questions = questions
@@ -88,7 +88,7 @@ class TheNetwork:
                     q_size = [float(x) for x in self.questions['general']['size'].split(',')]
                     q_widget['image'].size = (int(q_size[0] * self.size[0]), int(q_size[1] * self.size[1]))
                     q_widget['image'].pos = (int((i * 0.3 + 0.1) * self.size[0]), # self.questions['general']['pos'] -
-                                             int(0.1 * self.size[1]))
+                                             int(0.0 * self.size[1]))
 
                     q_widget['button'].pos = q_widget['image'].pos
                     q_widget['button'].size = q_widget['image'].size
