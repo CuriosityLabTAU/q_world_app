@@ -15,7 +15,8 @@ from kivy.uix.screenmanager import Screen
 from kivy.animation import Animation
 from copy import deepcopy
 from the_network import *
-LANGUAGE = 'English'  # 'Hebrew'
+LANGUAGE = 'Hebrew'  # 'Hebrew'
+sound_path = {'general': 'items/sounds/', 'world': 'x/sounds/'}
 
 
 class GameScreen(Screen):
@@ -175,15 +176,36 @@ class CuriosityGame:
             concept['widget'].image_id.source = self.network.image_dir + concept['image'][t % len(concept['image'])]
             Clock.schedule_once(partial(self.do_animation, concept, t + 1), 0.2)
 
-    def tell_story(self, text=None, story_file=None):
-        try:
-            sound = SoundLoader.load(story_file)
-            if sound.length > 0:
-                sound.play()
-            else:
+    def tell_story(self, text=None, story_file=None, source=None):
+        if not source:
+            source = 'general'
+        story_path = sound_path[source].replace('x', self.network.image_dir)
+        self.sounds = []
+        for story in story_file:
+            story_full_filename = story_path + story
+            loaded_sound = SoundLoader.load(story_full_filename)
+            if loaded_sound:
+                if loaded_sound.length > 0:
+                    self.sounds.append(loaded_sound)
+        if LANGUAGE == 'English':
+            if len(self.sounds) == 0:
                 TTS.speak([text])
-        except:
-            TTS.speak([text])
+            else:
+                self.play_story()
+        elif LANGUAGE == 'Hebrew':
+            if len(self.sounds) > 0:
+                self.play_story()
+
+    def play_story(self):
+        if len(self.sounds) > 0:
+            self.sounds[0].bind( on_stop=self.continue_play)
+            self.sounds[0].play()
+
+    def continue_play(self, *args):
+        if len(self.sounds) > 0:
+            self.sounds.pop(0)
+            self.play_story()
+
 
     def start(self):
         # set the timer of the game
@@ -196,12 +218,12 @@ class CuriosityGame:
         self.explanations = {
             'concept_pressed': {
                 'repeats': 3,
-                'sound': 'items/concept_press_explanation.wav',
+                'sound': ['concept_press_explanation.wav'],
                 'text': "you can ask a question on this object. what is it made of, why is it here, how does it work."
             },
             'question_pressed': {
                 'repeats': 3,
-                'sound': 'items/question_press_explanation.wav',
+                'sound': ['question_press_explanation.wav'],
                 'text': 'a new object appears. you can ask about it also.'
             }
         }

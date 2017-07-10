@@ -5,14 +5,16 @@
       "type" : "full",
       "n": 0,
       "duration": 150,
-      "introduction": ["you are space travelers, exploring alien worlds. you can tap each object you discover to ask specific questions on it. you have landed at your first planet. you have sixty seconds to learn about it", "introduction_1.wav"]
+      "introduction": ["you are space travelers, exploring alien worlds. you can tap each object you discover to ask specific questions on it. you have landed at your first planet. you have sixty seconds to learn about it",
+        ["introduction_1_1.wav", "introduction_1_2.wav", "introduction_1_3.wav", "introduction_1_4.wav"]]
     },
     {
       "network": "network_2",
       "type" : "full",
       "n": 0,
       "duration": 90,
-      "introduction": ["you have reached a new planet. you can tap each object you discover to ask specific questions on it. you have sixty seconds to learn about this planet","introduction_2.wav"]
+      "introduction": ["you have reached a new planet. you can tap each object you discover to ask specific questions on it. you have sixty seconds to learn about this planet",
+        ["introduction_2_1.wav", "introduction_2_2.wav", "introduction_2_3.wav"]]
 
     },
     {
@@ -20,7 +22,8 @@
       "type" : "n_questions",
       "n": 5,
       "duration": 120,
-      "introduction": ["you have reached your third planet. you are in a hurry and have time to ask only five questions. choose them carefully.","introduction_3.wav"]
+      "introduction": ["you have reached your third planet. you are in a hurry and have time to ask only five questions. choose them carefully.",
+        ["introduction_3_1.wav", "introduction_3_2.wav", "introduction_3_3.wav"]]
     },
     {
       "network": "network_4",
@@ -28,14 +31,15 @@
       "n": 1,
       "duration": 90,
       "introduction": ["a new planet appears. you have limited access to knowledge about it. you can select a single question type, such as how, what or why, and find out only about it.",
-        "introduction_4.wav"]
+        ["introduction_4_1.wav", "introduction_4_2.wav", "introduction_4_3.wav"]]
     },
     {
       "network": "network_5",
       "type" : "full",
       "n": 0,
       "duration": 90,
-      "introduction": ["space travelers, you have reached the final planet. you have sixty seconds to learn about it before returning home.","introduction_5.wav"]
+      "introduction": ["space travelers, you have reached the final planet. you have sixty seconds to learn about it before returning home.",
+        ["introduction_5_1.wav", "introduction_5_2.wav"]]
     }
   ],
   "questions": {
@@ -44,22 +48,22 @@
       "pos": 0.01
     },
     "what": {
-      "image": "what.png",
+      "image": "what_he.png",
       "pos": 0.1,
       "explanation": ["whenever you press the what button, you get information about the question what is this made out of",
-      "what_explanation.wav"]
+      ["what_explanation.wav"]]
     },
     "how": {
-      "image": "how.png",
+      "image": "how_he.png",
       "pos": 0.0,
       "explanation": ["whenever you press the how button, you get information about the question how does this work",
-      "how_explanation.wav"]
+      ["how_explanation.wav"]]
     },
     "why": {
-      "image": "why.png",
+      "image": "why_he.png",
       "pos": 0.2,
       "explanation": ["whenever you press the why button, you get information about the question why is it here",
-      "why_explanation.wav"]
+      ["why_explanation.wav"]]
     }
   },
   "edges": [
@@ -89,26 +93,26 @@
     "background": "background1.png",
     "story": {
       "what,why,how": {
-        "alien,what": ["the aliens are made of four different types of colorful cells", "ayh_alien_what.wav"],
-        "alien,why": ["the aliens are here to build their grand city in the hills", "ayh_alien_why.wav"],
-        "alien,how": ["the aliens work by channeling the flow between two orbs", "ayh_alien_how.wav"],
-        "reason_1,what": ["the grand city is made of two different types of colorful cells", "ayh_reason_1_what.wav"],
-        "reason_1,why": ["the grand city is built to make the aliens happy", "ayh_reason_1_why.wav"],
-        "reason_1,how": ["the city works by channeling the flow between two orbs", "ayh_reason_1_how.wav"],
+        "alien,what": ["the aliens are made of four different types of colorful cells", ["1_aliens_what.wav"]],
+        "alien,why": ["the aliens are here to build their grand city in the hills", ["1_aliens_why.wav"]],
+        "alien,how": ["the aliens work by channeling the flow between two orbs", ["1_aliens_how.wav"]],
+        "reason_1,what": ["the grand city is made of two different types of colorful cells", ["1_grand_city_what.wav"]],
+        "reason_1,why": ["the grand city is built to make the aliens happy", ["1_grand_city_why.wav"]],
+        "reason_1,how": ["the city works by channeling the flow between two orbs", ["1_grand_city_how.wav"]],
 
-        "plant,what": ["the plants are made of four different types of colorful cells", "ayh_plant_what.wav"],
-        "plant,why": ["the plants are here to feed the cute animals", "plant_why.wav"],
-        "plant,how": ["the plants work by channeling the flow between two orbs", "ayh_plant_how.wav"],
-        "reason_2,what": ["the green city is made of two different types of colorful cells", "ayh_reason_3_what.wav"],
-        "reason_2,why": ["the cute animals are here to feed to nasty animals", "concept_2_3_why.wav"],
-        "reason_2,how": ["the green city works by channeling the flow between two orbs", "ayh_reason_3_how.wav"],
+        "plant,what": ["the plants are made of four different types of colorful cells", ["1_plants_what.wav"]],
+        "plant,why": ["the plants are here to feed the cute animals", ["1_plants_why.wav"]],
+        "plant,how": ["the plants work by channeling the flow between two orbs", ["1_plants_how.wav"]],
+        "reason_2,what": ["the cute animals are made of two different types of colorful cells", ["1_cute_animals_what.wav"]],
+        "reason_2,why": ["the cute animals are here to feed to nasty animals", ["1_cute_animals_why.wav"]],
+        "reason_2,how": ["the cute animals work by channeling the flow between two orbs", ["1_cute_animals_how.wav"]],
 
-        "tech,what": ["the spaceship is made of four different types of colorful cells", "ayh_tech_what.wav"],
-        "tech,why": ["the spaceship is here to transport aliens from the grey city", "ayh_tech_why.wav"],
-        "tech,how": ["the spaceship works by channeling the flow between two orbs", "ayh_tech_how.wav"],
-        "reason_3,what": ["the grey city is made of two different types of colorful cells", "ayh_reason_5_what.wav"],
-        "reason_3,why": ["the grey city is here to take the aliens to the moon", "ayh_reason_5_why.wav"],
-        "reason_3,how": ["the grey city works by channeling the flow between two orbs", "ayh_reason_5 _how.wav"]
+        "tech,what": ["the spaceship is made of four different types of colorful cells", ["1_spaceship_what.wav"]],
+        "tech,why": ["the spaceship is here to transport aliens from the grey city", ["1_spaceship_why.wav"]],
+        "tech,how": ["the spaceship works by channeling the flow between two orbs", ["1_spaceship_how.wav"]],
+        "reason_3,what": ["the grey city is made of two different types of colorful cells", ["1_grey_city_what.wav"]],
+        "reason_3,why": ["the grey city is here to take the aliens to the moon", ["1_grey_city_why.wav"]],
+        "reason_3,how": ["the grey city works by channeling the flow between two orbs", ["1_grey_city_how.wav"]]
       },
       "how,what,why": {
         "alien,what": ["the aliens are made of four different types of colorful cells", "hay_alien_what.wav"],
@@ -306,75 +310,75 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of different circular objects",
-          "alien_what.wav"
+          ["2_alien_what.wav"]
         ],
         "alien,why": [
           "the aliens are here because their world was destroyed",
-          "alien_why.wav"
+          ["2_alien_why.wav"]
         ],
         "alien,how": [
           "the aliens work by rotating discs",
-          "alien_how.wav"
+          ["2_alien_how.wav"]
         ],
         "reason_1,what": [
           "their planet was made of two different circular objects",
-          "reason_1_what.wav"
+          ["2_home_planet_what.wav"]
         ],
         "reason_1,why": [
           "their old planet was destroyed by a powerful weapon",
-          "reason_1_why.wav"
+          ["2_home_planet_why.wav"]
         ],
         "reason_1,how": [
           "the planet was maintained by rotating discs",
-          "reason_1_how.wav"
+          ["2_home_planet_how.wav"]
         ],
         "plant,what": [
           "the trees are made of four different types of circular objects",
-          "plant_what.wav"
+          ["2_trees_what.wav"]
         ],
         "plant,why": [
-          "the plants are here to feed the cute animals",
-          "plant_why.wav"
+          "the trees are here to feed the cute animals",
+          ["2_trees_why.wav"]
         ],
         "plant,how": [
-          "the plants work by rotating discs",
-          "plant_how.wav"
+          "the trees work by rotating discs",
+          ["2_trees_how.wav"]
         ],
         "reason_2,what": [
           "the cute animals are made of  different types of circular objects",
-          "reason_3_what.wav"
+          ["2_cute_animals_what.wav"]
         ],
         "reason_2,why": [
           "the cute animals are here produce crystals",
-          "reason_3_why.wav"
+          ["2_cute_animals_why.wav"]
         ],
         "reason_2,how": [
           "the cute animals work by rotating discs",
-          "reason_3_how.wav"
+          ["2_cute_animals_how.wav"]
         ],
         "tech,what": [
           "the spaceship is made of four different circular objects",
-          "tech_what.wav"
+          ["2_spaceship_what.wav"]
         ],
         "tech,why": [
           "the spaceship is here to transport aliens to the spaceport",
-          "tech_why.wav"
+          ["2_spaceship_why.wav"]
         ],
         "tech,how": [
           "the spaceship work by rotating discs",
-          "tech_how.wav"
+          ["2_spaceship_how.wav"]
         ],
         "reason_3,what": [
           "the spaceport is made of different circular objects",
-          "reason_5_what.wav"
+          ["2_spacestation_what.wav"]
         ],
         "reason_3,why": [
           "the spaceport is here to bring asteroid minerals to the factories",
-          "reason_5_why.wav"
+          ["2_spacestation_why.wav"]
         ],
         "reason_3,how": [
           "the spaceport work by rotating discs",
-          "reason_5_how.wav"
+          ["2_spacestation_how.wav"]
         ]
       }
     },
@@ -551,75 +555,75 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of different geometrical shapes",
-          "alien_what.wav"
+          ["3_alien_what.wav"]
         ],
         "alien,why": [
           "the aliens are here to build the cube",
-          "alien_why.wav"
+          ["3_alien_why.wav"]
         ],
         "alien,how": [
           "the aliens work by colorful processes",
-          "alien_how.wav"
+          ["3_alien_how.wav"]
         ],
         "reason_1,what": [
           "the cube is made of different geometrical shapes",
-          "reason_1_what.wav"
+          ["3_cube_what.wav"]
         ],
         "reason_1,why": [
           "the cube is here to help take over all worlds",
-          "reason_1_why.wav"
+          ["3_cube_why.wav"]
         ],
         "reason_1,how": [
           "the cube work by internal colorful processes",
-          "reason_1_how.wav"
+          ["3_cube_how.wav"]
         ],
         "plant,what": [
           "the flowers are made of different geometrical shapes",
-          "plant_what.wav"
+          ["3_flowers_what.wav"]
         ],
         "plant,why": [
           "the flowers are here to combat the factories pollution",
-          "plant_why.wav"
+          ["3_flowers_why.wav"]
         ],
         "plant,how": [
           "the flowers work by internal colorful processes",
-          "plant_how.wav"
+          ["3_flowers_how.wav"]
         ],
         "reason_2,what": [
           "the factories are composed of different geometrical shapes",
-          "reason_3_what.wav"
+          ["3_factories_what.wav"]
         ],
         "reason_2,why": [
           "the factories are here to generate energy",
-          "reason_3_why.wav"
+          ["3_factories_why.wav"]
         ],
         "reason_2,how": [
           "the factories work by internal colorful processes",
-          "reason_3_how.wav"
+          ["3_factories_how.wav"]
         ],
         "tech,what": [
           "the weapon is made of different geometrical shapes",
-          "tech_what.wav"
+          ["3_weapon_what.wav"]
         ],
         "tech,why": [
           "the weapon is here to blast rocks",
-          "tech_why.wav"
+          ["3_weapon_why.wav"]
         ],
         "tech,how": [
           "the weapon work by colorful dynamic processes",
-          "tech_how.wav"
+          ["3_weapon_how.wav"]
         ],
         "reason_3,what": [
           "the rocks are made of different geometrical shapes",
-          "reason_5_what.wav"
+          ["3_rocks_what.wav"]
         ],
         "reason_3,why": [
           "the rocks are here to protect the wild creatures",
-          "reason_5_why.wav"
+          ["3_rocks_why.wav"]
         ],
         "reason_3,how": [
           "the rocks work by colorful dynamic processes",
-          "reason_5_how.wav"
+          ["3_rocks_how.wav"]
         ]
       }
     },
@@ -796,75 +800,75 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of different electrical components",
-          "alien_what.wav"
+          ["4_alien_what.wav"]
         ],
         "alien,why": [
           "the aliens are here to evolve to chips",
-          "alien_why.wav"
+          ["4_alien_why.wav"]
         ],
         "alien,how": [
           "the aliens work by electrical and mechanical process",
-          "alien_how.wav"
+          ["4_alien_how.wav"]
         ],
         "reason_1,what": [
           "the chips are made of different electrical components",
-          "reason_1_what.wav"
+          ["4_chips_what.wav"]
         ],
         "reason_1,why": [
           "the chips are here to enable high processing power",
-          "reason_1_why.wav"
+          ["4_chips_why.wav"]
         ],
         "reason_1,how": [
           "the chips work by electrical and mechanical process",
-          "reason_1_how.wav"
+          ["4_chips_how.wav"]
         ],
         "plant,what": [
           "the robotic plants are made of electrical components",
-          "plant_what.wav"
+          ["4_robotic_plants_what.wav"]
         ],
         "plant,why": [
           "the plants are here to enable light manipulation",
-          "plant_why.wav"
+          ["4_robotic_plants_why.wav"]
         ],
         "plant,how": [
           "the robotic plants work by electrical and mechanical process",
-          "plant_how.wav"
+          ["4_robotic_plants_how.wav"]
         ],
         "reason_2,what": [
           "the light catchers are made of electrical components",
-          "reason_3_what.wav"
+          ["4_light_what.wav"]
         ],
         "reason_2,why": [
           "the the light catchers are here to harvest the sun",
-          "reason_3_why.wav"
+          ["4_light_why.wav"]
         ],
         "reason_2,how": [
           "the light catchers work by electrical and mechanical process",
-          "reason_3_how.wav"
+          ["4_light_how.wav"]
         ],
         "tech,what": [
           "the telecsope is made of electrical components",
-          "tech_what.wav"
+          ["4_telescope_what.wav"]
         ],
         "tech,why": [
           "the telescope is here to discover new technologies",
-          "tech_why.wav"
+          ["4_telescope_why.wav"]
         ],
         "tech,how": [
           "the telescope work by electrical and mechanical process",
-          "tech_how.wav"
+          ["4_telescope_how.wav"]
         ],
         "reason_3,what": [
           "the new technologies are made of different electrical components",
-          "reason_5_what.wav"
+          ["4_tech_what.wav"]
         ],
         "reason_3,why": [
           "the new technologies are here to take the aliens to the stars",
-          "reason_5_why.wav"
+          ["4_tech_why.wav"]
         ],
         "reason_3,how": [
           "the new technologies also work by electrical and mechanical process",
-          "reason_5_how.wav"
+          ["4_tech_how.wav"]
         ]
       }
     },
@@ -1041,75 +1045,75 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of crystals",
-          "alien_what.wav"
+          ["5_alien_what.wav"]
         ],
         "alien,why": [
           "the aliens are here to build the ultimate factory",
-          "alien_why.wav"
+          ["5_alien_why.wav"]
         ],
         "alien,how": [
           "the aliens work by spiraling rainbow processes",
-          "alien_how.wav"
+          ["5_alien_how.wav"]
         ],
         "reason_1,what": [
           "the ultimate factory is built out of crystals",
-          "reason_1_what.wav"
+          ["5_ulti_factory_what.wav"]
         ],
         "reason_1,why": [
           "the factory is here to produce the pyramid crystal",
-          "reason_1_why.wav"
+          ["5_ulti_factory_why.wav"]
         ],
         "reason_1,how": [
           "the factory work by harnessing the rainbow processes",
-          "reason_1_how.wav"
+          ["5_ulti_factory_how.wav"]
         ],
         "plant,what": [
           "the thorny plants are made out of crystals",
-          "plant_what.wav"
+          ["5_thorn_plants_what.wav"]
         ],
         "plant,why": [
           "the thorny plants are here to protect against predators",
-          "plant_why.wav"
+          ["5_thorn_plants_why.wav"]
         ],
         "plant,how": [
           "the plants work by internal rainbow processes",
-          "plant_how.wav"
+          ["5_thorn_plants_how.wav"]
         ],
         "reason_2,what": [
           "the predators are made out of crystals",
-          "reason_3_what.wav"
+          ["5_predators_what.wav"]
         ],
         "reason_2,why": [
           "the predators are here to eat all the birds",
-          "reason_3_why.wav"
+          ["5_predators_why.wav"]
         ],
         "reason_2,how": [
           "the predators work by internal dynamic processes",
-          "reason_3_how.wav"
+          ["5_predators_how.wav"]
         ],
         "tech,what": [
           "the spacecraft is made out of crystals",
-          "tech_what.wav"
+          ["5_spaceship_what.wav"]
         ],
         "tech,why": [
           "the spacecraft is here to transport endangered species",
-          "tech_why.wav"
+          ["5_spaceship_why.wav"]
         ],
         "tech,how": [
           "the spacecraft works by harnessing the rainbow processes",
-          "tech_how.wav"
+          ["5_spaceship_how.wav"]
         ],
         "reason_3,what": [
           "the endangered species are made out of crystals",
-          "reason_5_what.wav"
+          ["5_endangered_what.wav"]
         ],
         "reason_3,why": [
           "the endangered species are dwindeling because of polluting factories",
-          "reason_5_why.wav"
+          ["5_endangered_why.wav"]
         ],
         "reason_3,how": [
           "the endangered species work by internal spiraling processes",
-          "reason_5_how.wav"
+          ["5_endangered_how.wav"]
         ]
       }
     },

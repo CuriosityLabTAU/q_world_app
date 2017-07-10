@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from kivy.app import App
-from q_world_app import *
 from kivy_communication import *
 from kivy.uix.screenmanager import ScreenManager, Screen
 from text_handling import *
 from copy import deepcopy
+from q_world_app import *
 
 
 class ZeroScreen(Screen):
@@ -59,7 +59,7 @@ class QWorldApp(App):
 
     def press_start(self, pre_post):
         # self.game_screen.curiosity_game.filename = 'items_' + pre_post + '.json'
-        self.sm.current = 'game_2'
+        self.sm.current = 'game_0'
 
 if __name__ == '__main__':
     QWorldApp().run()
