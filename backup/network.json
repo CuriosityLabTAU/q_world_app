@@ -310,15 +310,15 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of different circular objects",
-          ["2_alien_what.wav"]
+          ["2_aliens_what.wav"]
         ],
         "alien,why": [
           "the aliens are here because their world was destroyed",
-          ["2_alien_why.wav"]
+          ["2_aliens_why.wav"]
         ],
         "alien,how": [
           "the aliens work by rotating discs",
-          ["2_alien_how.wav"]
+          ["2_aliens_how.wav"]
         ],
         "reason_1,what": [
           "their planet was made of two different circular objects",
@@ -555,15 +555,15 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of different geometrical shapes",
-          ["3_alien_what.wav"]
+          ["3_aliens_what.wav"]
         ],
         "alien,why": [
           "the aliens are here to build the cube",
-          ["3_alien_why.wav"]
+          ["3_aliens_why.wav"]
         ],
         "alien,how": [
           "the aliens work by colorful processes",
-          ["3_alien_how.wav"]
+          ["3_aliens_how.wav"]
         ],
         "reason_1,what": [
           "the cube is made of different geometrical shapes",
@@ -800,15 +800,15 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of different electrical components",
-          ["4_alien_what.wav"]
+          ["4_aliens_what.wav"]
         ],
         "alien,why": [
           "the aliens are here to evolve to chips",
-          ["4_alien_why.wav"]
+          ["4_aliens_why.wav"]
         ],
         "alien,how": [
           "the aliens work by electrical and mechanical process",
-          ["4_alien_how.wav"]
+          ["4_aliens_how.wav"]
         ],
         "reason_1,what": [
           "the chips are made of different electrical components",
@@ -1045,15 +1045,15 @@
       "what,why,how": {
         "alien,what": [
           "the aliens are made of crystals",
-          ["5_alien_what.wav"]
+          ["5_aliens_what.wav"]
         ],
         "alien,why": [
           "the aliens are here to build the ultimate factory",
-          ["5_alien_why.wav"]
+          ["5_aliens_why.wav"]
         ],
         "alien,how": [
           "the aliens work by spiraling rainbow processes",
-          ["5_alien_how.wav"]
+          ["5_aliens_how.wav"]
         ],
         "reason_1,what": [
           "the ultimate factory is built out of crystals",
