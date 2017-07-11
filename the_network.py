@@ -112,10 +112,10 @@ class TheNetwork:
             self.concepts[n]['new'] = concept
 
         self.parent_game.discovered_network.add((concept, question))
-        self.parent_game.question_pressed(question)
-        self.parent_game.tell_story(text=self.story[concept + ',' + question][0],
-                                    story_file=self.story[concept + ',' + question][1],
-                                    source='world')
+        self.parent_game.question_pressed(question, concept)
+        # self.parent_game.tell_story(text=self.story[concept + ',' + question][0],
+        #                             story_file=self.story[concept + ',' + question][1],
+        #                             source='world')
 
     def concept_pressed(self, concept):
         self.parent_game.discovered_network.add((concept, 'questions'))

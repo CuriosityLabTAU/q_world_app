@@ -124,7 +124,7 @@ class CuriosityGame:
                                 self.explanations['concept_pressed']['sound'])
                 self.explanations['concept_pressed']['repeats'] -= 1
 
-    def question_pressed(self, question):
+    def question_pressed(self, question, concept_):
         if self.game_questions > 0:
             self.game_questions -= 1
             if self.game_questions == 0:
@@ -140,11 +140,20 @@ class CuriosityGame:
                             concept['q_widget'].q[q]['button'].disabled = True
         self.refresh_network()
 
+        current_story = {'text': '', 'sound': []}
+
+        current_story['text'] += self.network.story[concept_ + ',' + question][0]
+        for s in self.network.story[concept_ + ',' + question][1]:
+            current_story['sound'].append(self.network.image_dir + 'sounds/' + s)
+
         if self.tutorial:
             if self.explanations['question_pressed']['repeats'] > 0:
-                self.tell_story(self.explanations['question_pressed']['text'],
-                                self.explanations['question_pressed']['sound'])
+                current_story['text'] += self.explanations['question_pressed']['text']
+                for s in self.explanations['question_pressed']['sound']:
+                    current_story['sound'].append('items/sounds/' + s)
                 self.explanations['question_pressed']['repeats'] -= 1
+
+        self.tell_story(text=current_story['text'], story_file=current_story['sound'], story_path='')
 
     def refresh_network(self):
         self.the_widget.clear_widgets()
@@ -176,10 +185,12 @@ class CuriosityGame:
             concept['widget'].image_id.source = self.network.image_dir + concept['image'][t % len(concept['image'])]
             Clock.schedule_once(partial(self.do_animation, concept, t + 1), 0.2)
 
-    def tell_story(self, text=None, story_file=None, source=None):
+    def tell_story(self, text=None, story_file=None, source=None, story_path=None):
         if not source:
             source = 'general'
-        story_path = sound_path[source].replace('x', self.network.image_dir)
+        if story_path is None:
+            story_path = sound_path[source].replace('x', self.network.image_dir)
+
         self.sounds = []
         for story in story_file:
             story_full_filename = story_path + story
@@ -217,13 +228,13 @@ class CuriosityGame:
         self.tutorial = True
         self.explanations = {
             'concept_pressed': {
-                'repeats': 3,
-                'sound': ['concept_press_explanation.wav'],
+                'repeats': 1,
+                'sound': ['intro_specific_object_1.wav', 'intro_specific_object_2.wav'],
                 'text': "you can ask a question on this object. what is it made of, why is it here, how does it work."
             },
             'question_pressed': {
-                'repeats': 3,
-                'sound': ['question_press_explanation.wav'],
+                'repeats': 1,
+                'sound': ['intro_new_object_1.wav', 'intro_new_object_2.wav'],
                 'text': 'a new object appears. you can ask about it also.'
             }
         }
