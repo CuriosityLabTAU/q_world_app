@@ -71,7 +71,7 @@ class GameScreen(Screen):
     def explanation_screen(self, dt):
         self.curiosity_game.start()
         self.curiosity_game.tell_story(self.game_introduction[0], self.game_introduction[1])
-        Clock.schedule_once(self.end_game, 10) #self.curiosity_game.game_duration)
+        Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
 
     def end_game(self, dt):
         self.curiosity_game.the_end = True
