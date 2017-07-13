@@ -13,7 +13,7 @@ package.domain = com.gorengordon.curiosity
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,json,m4a,gif,txt,ttf
+source.include_exts = py,png,jpg,kv,atlas,json,m4a,gif,txt,ttf,wav
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
