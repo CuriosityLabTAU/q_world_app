@@ -71,9 +71,14 @@ class GameScreen(Screen):
     def explanation_screen(self, dt):
         self.curiosity_game.start()
         self.curiosity_game.tell_story(self.game_introduction[0], self.game_introduction[1])
-        Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
+        Clock.schedule_once(self.end_game, 10) #self.curiosity_game.game_duration)
 
     def end_game(self, dt):
+        self.curiosity_game.the_end = True
+        if not self.curiosity_game.is_playing:
+            self.next_game()
+
+    def next_game(self):
         log_str = 'end,q_type='
         for q in self.curiosity_game.game_q_type:
             log_str += str(q) + ';'
@@ -113,13 +118,11 @@ class CuriosityGame:
         self.is_playing = False
 
     def concept_pressed(self, concept_name):
-        self.current_question_widget = None
         self.the_widget.clear_widgets()
         for c_name, concept in self.network.concepts.items():
             if concept['visible']:
                 self.the_widget.add_widget(concept['widget'])
             if c_name == concept_name:
-                self.current_question_widget = concept['q_widget']
                 self.the_widget.add_widget(concept['q_widget'])
 
         if self.tutorial:
@@ -220,6 +223,9 @@ class CuriosityGame:
 
     def continue_play(self, *args):
         self.stopped_playing()
+        if self.the_end:
+            self.game_screen.next_game()
+            return
         if len(self.sounds) > 0:
             self.sounds.pop(0)
             self.play_story()
