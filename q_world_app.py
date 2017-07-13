@@ -69,9 +69,9 @@ class GameScreen(Screen):
         Clock.schedule_once(self.explanation_screen, 0.5)
 
     def explanation_screen(self, dt):
+        self.curiosity_game.start()
         self.curiosity_game.tell_story(self.game_introduction[0], self.game_introduction[1])
         Clock.schedule_once(self.end_game, self.curiosity_game.game_duration)
-        self.curiosity_game.start()
 
     def end_game(self, dt):
         log_str = 'end,q_type='
@@ -100,6 +100,7 @@ class CuriosityGame:
     discovered_network = set()
     tutorial = False
     explanations = None
+    current_question_widget = None
 
     def __init__(self, game_screen=None):
         self.game_screen = game_screen
@@ -109,13 +110,16 @@ class CuriosityGame:
     def load(self, network=None, questions=None, edges=None):
         self.network.load(network_dict=network,questions=questions, edges=edges, app_size=self.the_widget.size)
         self.the_widget.update_background(self.network.background)
+        self.is_playing = False
 
     def concept_pressed(self, concept_name):
+        self.current_question_widget = None
         self.the_widget.clear_widgets()
         for c_name, concept in self.network.concepts.items():
             if concept['visible']:
                 self.the_widget.add_widget(concept['widget'])
             if c_name == concept_name:
+                self.current_question_widget = concept['q_widget']
                 self.the_widget.add_widget(concept['q_widget'])
 
         if self.tutorial:
@@ -208,15 +212,27 @@ class CuriosityGame:
                 self.play_story()
 
     def play_story(self):
-        if len(self.sounds) > 0:
-            self.sounds[0].bind( on_stop=self.continue_play)
-            self.sounds[0].play()
+        if not self.is_playing:
+            if len(self.sounds) > 0:
+                self.started_playing()
+                self.sounds[0].bind( on_stop=self.continue_play)
+                self.sounds[0].play()
 
     def continue_play(self, *args):
+        self.stopped_playing()
         if len(self.sounds) > 0:
             self.sounds.pop(0)
             self.play_story()
 
+    def started_playing(self):
+        self.is_playing = True
+        for w in self.the_widget.children:
+            w.disabled = True
+
+    def stopped_playing(self):
+        self.is_playing = False
+        for w in self.the_widget.children:
+            w.disabled = False
 
     def start(self):
         # set the timer of the game
