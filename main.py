@@ -13,6 +13,9 @@ class ZeroScreen(Screen):
     def on_enter(self, *args):
         KL.restart()
 
+    def start(self):
+        self.ids['subject_id'].bind(text=self.ids['subject_id'].on_text_change)
+
 
 class QWorldApp(App):
     game_screen = []
@@ -26,6 +29,7 @@ class QWorldApp(App):
         self.sm = ScreenManager()
 
         screen = ZeroScreen()
+        screen.start()
         screen.ids['subject_id'].bind(text=screen.ids['subject_id'].on_text_change)
         self.sm.add_widget(screen)
 
