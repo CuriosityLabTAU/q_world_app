@@ -4,7 +4,7 @@
       "network": "network_1",
       "type" : "full",
       "n": 0,
-      "duration": 150,
+      "duration": 60,
       "introduction": ["you are space travelers, exploring alien worlds. you can tap each object you discover to ask specific questions on it. you have landed at your first planet. you have sixty seconds to learn about it",
         ["introduction_1_1.wav", "introduction_1_2.wav", "introduction_1_3.wav", "introduction_1_4.wav"]]
     },
@@ -12,7 +12,7 @@
       "network": "network_2",
       "type" : "full",
       "n": 0,
-      "duration": 90,
+      "duration": 60,
       "introduction": ["you have reached a new planet. you can tap each object you discover to ask specific questions on it. you have sixty seconds to learn about this planet",
         ["introduction_2_1.wav", "introduction_2_2.wav", "introduction_2_3.wav"]]
 
@@ -21,7 +21,7 @@
       "network": "network_3",
       "type" : "n_questions",
       "n": 5,
-      "duration": 120,
+      "duration": 60,
       "introduction": ["you have reached your third planet. you are in a hurry and have time to ask only five questions. choose them carefully.",
         ["introduction_3_1.wav", "introduction_3_2.wav", "introduction_3_3.wav"]]
     },
@@ -29,7 +29,7 @@
       "network": "network_4",
       "type" : "n_type",
       "n": 1,
-      "duration": 90,
+      "duration": 60,
       "introduction": ["a new planet appears. you have limited access to knowledge about it. you can select a single question type, such as how, what or why, and find out only about it.",
         ["introduction_4_1.wav", "introduction_4_2.wav", "introduction_4_3.wav"]]
     },
@@ -37,7 +37,7 @@
       "network": "network_5",
       "type" : "full",
       "n": 0,
-      "duration": 90,
+      "duration": 60,
       "introduction": ["space travelers, you have reached the final planet. you have sixty seconds to learn about it before returning home.",
         ["introduction_5_1.wav", "introduction_5_2.wav"]]
     }
