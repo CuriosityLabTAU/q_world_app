@@ -123,7 +123,8 @@ class CuriosityGame:
             if concept['visible']:
                 self.the_widget.add_widget(concept['widget'])
             if c_name == concept_name:
-                self.the_widget.add_widget(concept['q_widget'])
+                if 'why' in concept or 'what' in concept or 'why' in concept:
+                    self.the_widget.add_widget(concept['q_widget'])
 
         if self.tutorial:
             if self.explanations['concept_pressed']['repeats'] > 0:
