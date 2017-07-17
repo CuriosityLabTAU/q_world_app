@@ -4,6 +4,8 @@ import json
 def get_background(filename):
     reader = csv.reader(open(filename, 'r'))
     for row in reader:
+        if len(row) == 1:
+            row = row[0].split('\t')
         if len(row) > 1:
             if 'background' in row[1]:
                 background = [int(r) for r in row[2:]]
@@ -16,7 +18,10 @@ def get_images(filename, background, world):
     reader = csv.reader(open(filename, 'r'))
     images = {}
     for row in reader:
+        if len(row) == 1:
+            row = row[0].split('\t')
         if 'background' not in row[1] and row[0] == '' and row[1] != '':
+            print(row)
             img_name = row[1]
             images[img_name] = [int(r) for r in row[2:]]
             images[img_name][0] -= images[img_name][2] / 2 # shift from middle to bottom-left
@@ -31,6 +36,7 @@ def get_images(filename, background, world):
 images = {}
 for world in range(1,6):
     filename = 'world_%d.csv' % world
+    print(filename)
     background = get_background(filename)
     images['network_%d' % world] = get_images(filename, background, world)
 
