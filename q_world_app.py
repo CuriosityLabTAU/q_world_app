@@ -92,6 +92,7 @@ class GameScreen(Screen):
         try:
             self.the_app.sm.current = 'game_' + str(self.game_number+1)
         except:
+            KL.log.insert(action=LogAction.data, obj='game', comment='the_end', sync=True)
             sl = SoundLoader.load('items/sounds/the_end_Q_World.wav')
             sl.bind(on_stop=self.end_subject)
             sl.play()
