@@ -474,7 +474,7 @@
         "level": 2
       },
       "reason_5": {
-        "image": ["app1_all_city_2.png"],
+        "image": ["crystals4.png"],
         "pos": "0.02,0.50",
         "size": "0.2, 0.2",
         "level": 2
@@ -528,19 +528,19 @@
         "level": 2
       },
       "process_extend_1": {
-        "image": ["moon.png"],
+        "image": ["how_4.png"],
         "pos": "0.72,0.76",
         "size": "0.2, 0.2",
         "level": 2
       },
       "process_extend_2": {
-        "image": ["moon.png"],
+        "image": ["how_4.png"],
         "pos": "0.72,0.76",
         "size": "0.2, 0.2",
         "level": 2
       },
       "process_extend_3": {
-        "image": ["moon.png"],
+        "image": ["how_4.png"],
         "pos": "0.72,0.76",
         "size": "0.2, 0.2",
         "level": 2

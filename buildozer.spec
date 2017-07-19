@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = Questoin World
+title = Game 1
 
 # (str) Package name
 package.name = qworldapp
