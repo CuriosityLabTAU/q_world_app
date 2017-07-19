@@ -98,6 +98,7 @@ class GameScreen(Screen):
             sl.play()
 
     def end_subject(self, *args):
+
         self.the_app.stop()
             # self.the_app.sm.current = 'zero_screen'
 

@@ -62,7 +62,7 @@ class QWorldApp(App):
 
     def press_start(self, pre_post):
         # self.game_screen.curiosity_game.filename = 'items_' + pre_post + '.json'
-        self.sm.current = 'game_0'
+        self.sm.current = 'game_1'
 
 if __name__ == '__main__':
     QWorldApp().run()
