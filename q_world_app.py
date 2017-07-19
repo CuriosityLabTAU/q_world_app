@@ -92,7 +92,13 @@ class GameScreen(Screen):
         try:
             self.the_app.sm.current = 'game_' + str(self.game_number+1)
         except:
-            self.the_app.sm.current = 'zero_screen'
+            sl = SoundLoader.load('items/sounds/the_end_Q_World.wav')
+            sl.bind(on_stop=self.end_subject)
+            sl.play()
+
+    def end_subject(self, *args):
+        self.the_app.stop()
+            # self.the_app.sm.current = 'zero_screen'
 
 
 class CuriosityGame:
@@ -133,11 +139,6 @@ class CuriosityGame:
                 self.explanations['concept_pressed']['repeats'] -= 1
 
     def question_pressed(self, question, concept_):
-        if self.game_questions > 0:
-            self.game_questions -= 1
-            if self.game_questions == 0:
-                self.game_screen.end_game(0)
-
         if self.game_q_type is not None:
             if '' in self.game_q_type:      # there is still a free question type
                 self.game_q_type[self.game_q_type.index('')] = question
@@ -162,6 +163,12 @@ class CuriosityGame:
                 self.explanations['question_pressed']['repeats'] -= 1
 
         self.tell_story(text=current_story['text'], story_file=current_story['sound'], story_path='')
+
+        if self.game_questions > 0:
+            self.game_questions -= 1
+            if self.game_questions == 0:
+                Clock.schedule_once(self.game_screen.end_game, 0.5)
+                return
 
     def refresh_network(self):
         self.the_widget.clear_widgets()

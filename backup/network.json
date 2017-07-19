@@ -4,7 +4,7 @@
       "network": "network_1",
       "type" : "full",
       "n": 0,
-      "duration": 60,
+      "duration": 90,
       "introduction": ["you are space travelers, exploring alien worlds. you can tap each object you discover to ask specific questions on it. you have landed at your first planet. you have sixty seconds to learn about it",
         ["introduction_1_1.wav", "introduction_1_2.wav", "introduction_1_3.wav", "introduction_1_4.wav"]]
     },
