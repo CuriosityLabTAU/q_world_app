@@ -191,7 +191,13 @@ class CuriosityGame:
                 # Clock.schedule_once(partial(self.new_concept, concept), 0.5)
 
             concept['new'] = None
-        print(self.discovered_network)
+
+        visible_network = []
+        for concept in self.discovered_network:
+            if concept[1] == 'visible':
+                visible_network.append(concept[0])
+        visible_network_str = str(visible_network).replace('u\'', '"').replace('\'', '"')
+        KL.log.insert(action=LogAction.data, obj='visible_network', comment=visible_network_str)
 
     def check_animation(self, concept):
         if len(concept['image']) > 1:
