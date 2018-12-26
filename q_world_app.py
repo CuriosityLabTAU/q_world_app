@@ -89,9 +89,9 @@ class GameScreen(Screen):
         for c_name, c in self.curiosity_game.network.concepts.items():
             c['visible'] = c['level'] == 1
 
-        try:
+        if self.game_number < 4:
             self.the_app.sm.current = 'game_' + str(self.game_number+1)
-        except:
+        else:
             KL.log.insert(action=LogAction.data, obj='game', comment='the_end', sync=True)
             self.curiosity_game.is_playing = True
             sl = SoundLoader.load('items/sounds/the_end_Q_World.wav')
